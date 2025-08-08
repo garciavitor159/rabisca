@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco de Notas Online - Cadastre uma Nota</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/forms-nota.css">
+    <link rel="stylesheet" href="css/modais-confirmacao.css">
+    <script src="js/funcoes.js" defer></script>
+    <script src="js/principal.js" defer></script>
+    <script src="js/deletar-conta.js" defer></script>
+    <script src="js/validar-nota.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="area-logo">
+            <img src="img/logo.svg" alt="Logo do Bloco de Notas Online" class="img-logo">
+            <h1 class="titulo-principal">Bloco de Notas Online</h1>
+        </div>
+        <nav class="navbar-principal">
+            <button type="button" id="botao-abrir-navbar-lateral" class="botao-alternar-navbar-lateral botao-abrir-navbar-lateral">
+                <i class="bi bi-list"></i>
+            </button>
+            <ul class="lista-nav-principal">
+                <li>
+                    <a href="painel.html" class="link-nav-principal">
+                        <i class="bi bi-grid"></i> Painel
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastrar-nota.html" class="link-nav-principal">
+                        <i class="bi bi-journal-text"></i> Cadastre uma Nota
+                    </a>
+                </li>
+                <li>
+                    <a href="consultar-notas.html" class="link-nav-principal">
+                        <i class="bi bi-search"></i> Consulte suas Notas
+                    </a>
+                </li>
+                <li>
+                    <a href="editar-dados.html" class="link-nav-principal">
+                        <i class="bi bi-pencil-square"></i> Edite seus Dados
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" id="link-deletar-conta-principal" class="link-nav-principal">
+                        <i class="bi bi-trash"></i> Delete sua Conta
+                    </a>
+                </li>
+                <li>
+                    <a href="php/logout.php" class="link-nav-principal">
+                        <i class="bi bi-box-arrow-in-left"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="conteudo-principal">
+        <h2 class="titulo-conteudo-principal">
+            Cadastre uma Nota <i class="bi bi-journal-text"></i>
+        </h2>
+        <form action="php/processar-cadastro-nota.php" method="POST" id="form" class="form">
+            <div>
+                <label for="titulo" class="label">
+                    Título: <span class="campo-obrigatorio">*</span>
+                </label>
+                <input type="text" name="titulo" id="titulo" class="campo" placeholder="Digite um título para sua nota" maxlength="40" required>
+            </div>
+            <div>
+                <label for="descricao" class="label">
+                    Descrição: <span class="campo-obrigatorio">*</span>
+                </label>
+                <textarea name="descricao" id="descricao" class="campo campo-descricao" placeholder="Digite uma descrição para sua nota" maxlength="200" required></textarea>
+            </div>
+            <button type="submit" class="botao botao-enviar">
+                Cadastrar <i class="bi bi-journal-text"></i>
+            </button>
+        </form>
+    </main>
+
+    <div id="fundo-navbar-lateral" class="fundo esconder"></div>
+    <nav id="navbar-lateral" class="navbar-lateral esconder">
+        <button type="button" id="botao-fechar-navbar-lateral" class="botao-alternar-navbar-lateral botao-fechar-navbar-lateral">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <ul class="lista-nav-lateral">
+            <li>
+                <a href="painel.html" class="link-nav-lateral">
+                    <i class="bi bi-grid"></i> Painel
+                </a>
+            </li>
+            <li>
+                <a href="cadastrar-nota.html" class="link-nav-lateral">
+                    <i class="bi bi-journal-text"></i> Cadastre uma Nota
+                </a>
+            </li>
+            <li>
+                <a href="consultar-notas.html" class="link-nav-lateral">
+                    <i class="bi bi-search"></i> Consulte suas Notas
+                </a>
+            </li>
+            <li>
+                <a href="editar-dados.html" class="link-nav-lateral">
+                    <i class="bi bi-pencil-square"></i> Edite seus Dados
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" id="link-deletar-conta-lateral" class="link-nav-lateral">
+                    <i class="bi bi-trash"></i> Delete sua Conta
+                </a>
+            </li>
+            <li>
+                <a href="php/logout.php" class="link-nav-lateral">
+                    <i class="bi bi-box-arrow-in-left"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="fundo-modal-msg" class="fundo esconder"></div>
+    <div id="modal-msg" class="modal esconder">
+        <h3 class="titulo-modal">
+            Atenção <i class="bi bi-exclamation-triangle"></i>
+        </h3>
+        <p id="txt-modal-msg" class="txt-modal"></p>
+        <button type="button" id="botao-fechar-modal-msg" class="botao botao-fechar-modal">
+            Fechar <i class="bi bi-x-square"></i>
+        </button>
+    </div>
+
+    <div id="fundo-modal-confirmacao-conta" class="fundo esconder"></div>
+    <div id="modal-confirmacao-conta" class="modal esconder">
+        <h3 class="titulo-modal">
+            Atenção <i class="bi bi-exclamation-triangle"></i>
+        </h3>
+        <p class="txt-modal">Tem certeza?</p>
+        <div class="area-confirmacao">
+            <button type="button" id="botao-confirmar-delecao-conta" class="botao botao-confirmacao botao-confirmar">
+                Sim <i class="bi bi-check-square"></i>
+            </button>
+            <button type="button" id="botao-negar-delecao-conta" class="botao botao-confirmacao botao-negar">
+                Não <i class="bi bi-x-square"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer class="rodape">
+        <p class="creditos">
+            &copy; 2025 Bloco de Notas Online. Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.campo-obrigatorio {
+    color: #ff0000;
+}
+
+.campo {
+    font-size: .9em;
+    width: 100%;
+    padding: 15px 13px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+
+.campo:focus {
+    border-color: #495672;
+    outline: none;
+    box-shadow: 0 0 10px #495672;
+}
+
+.botao-enviar {
+    align-self: flex-start;
+    font-size: .9em;
+    background-color: #495672;
+    padding: 15px 17px;
+}
+
+.botao-enviar:hover {
+    color: #495672;
+    background-color: transparent;
+    border-color: #495672;
+}

@@ -1,0 +1,46 @@
+.area-notas {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nota {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #fff;
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, .5);
+}
+
+.area-acoes-nota {
+    display: flex;
+    gap: 16px;
+}
+
+.botao-acao-nota {
+    font-size: .9em;
+    padding: 15px 17px;
+}
+
+.botao-editar {
+    background-color: #008000;
+}
+
+.botao-editar:hover {
+    color: #008000;
+    background-color: transparent;
+    border-color: #008000;
+}
+
+.botao-deletar {
+    background-color: #ff0000;
+}
+
+.botao-deletar:hover {
+    color: #ff0000;
+    background-color: transparent;
+    border-color: #ff0000;
+}

@@ -1,0 +1,11 @@
+.txt-alternar-forms {
+    margin-top: 16px;
+}
+
+.link-alternar-forms {
+    color: #0077ff;
+}
+
+.link-alternar-forms:hover {
+    text-decoration: underline;
+}
