@@ -1,0 +1,23 @@
+.txt-chamada-acao {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.area-botoes-chamada-acao {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.botao-chamada-acao {
+  background-color: #495672;
+  padding: 16px 18px;
+}
+
+.botao-chamada-acao:hover {
+  color: #495672;
+  background-color: transparent;
+  border-color: #495672;
+}

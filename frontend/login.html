@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - Login</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/principal.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/campos-senha.css" />
+    <link rel="stylesheet" href="css/links-alternar-forms.css" />
+    <script src="js/funcoes.js" defer></script>
+    <script src="js/principal.js" defer></script>
+    <script src="js/forms-usuario.js" defer></script>
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="area-logo">
+        <img src="img/logo.svg" alt="Logo do Rabisca" class="logo" />
+        <h1>Rabisca</h1>
+      </div>
+      <nav class="navbar-principal">
+        <button
+          type="button"
+          id="botao-abrir-navbar-lateral"
+          class="botao-alternar-navbar-lateral botao-abrir-navbar-lateral"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-nav-principal">
+          <li>
+            <a href="index.html" class="link-nav-principal">
+              <i class="bi bi-house"></i> Home
+            </a>
+          </li>
+          <li>
+            <a href="cadastrar-usuario.html" class="link-nav-principal">
+              <i class="bi bi-person-add"></i> Cadastre-se
+            </a>
+          </li>
+          <li>
+            <a href="login.html" class="link-nav-principal">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="conteudo-principal">
+      <h2 class="titulo-conteudo-principal">
+        Login <i class="bi bi-box-arrow-in-right"></i>
+      </h2>
+      <form
+        action="php/processar-login.php"
+        method="POST"
+        id="form"
+        class="form"
+        novalidate
+      >
+        <label for="nome">
+          Nome de Usuário: <span class="campo-obrigatorio">*</span>
+        </label>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          class="campo"
+          placeholder="Digite seu nome de usuário"
+          maxlength="30"
+          required
+        />
+        <label for="senha">
+          Senha: <span class="campo-obrigatorio">*</span>
+        </label>
+        <div class="area-campo-senha">
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            class="campo campo-senha"
+            placeholder="Digite sua senha"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,30}$"
+            title="A senha deve conter entre 8 e 30 caracteres, incluindo uma letra minúscula, uma letra maiúscula, um número e um símbolo."
+            maxlength="30"
+            maxlength="30"
+            required
+          />
+          <button
+            type="button"
+            id="botao-alternar-senha"
+            class="botao-alternar-senha"
+          >
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+        <button type="submit" class="botao botao-enviar">
+          Login <i class="bi bi-box-arrow-in-right"></i>
+        </button>
+      </form>
+      <p>
+        Ainda não tem conta?
+        <a href="cadastrar-usuario.html" class="link-alternar-forms"
+          >Cadastre-se!</a
+        >
+      </p>
+    </main>
+
+    <div id="fundo-navbar-lateral" class="fundo esconder"></div>
+    <nav id="navbar-lateral" class="navbar-lateral esconder">
+      <button
+        type="button"
+        id="botao-fechar-navbar-lateral"
+        class="botao-alternar-navbar-lateral botao-fechar-navbar-lateral"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-nav-lateral">
+        <li>
+          <a href="index.html" class="link-nav-lateral">
+            <i class="bi bi-house"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="cadastrar-usuario.html" class="link-nav-lateral">
+            <i class="bi bi-person-add"></i> Cadastre-se
+          </a>
+        </li>
+        <li>
+          <a href="login.html" class="link-nav-lateral">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="fundo-modal-msg" class="fundo esconder"></div>
+    <div id="modal-msg" class="modal esconder">
+      <h3 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h3>
+      <p id="txt-modal-msg" class="txt-modal"></p>
+      <button
+        type="button"
+        id="botao-fechar-modal-msg"
+        class="botao botao-fechar-modal"
+      >
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+
+    <footer class="rodape">
+      <p class="creditos">&copy; 2025 Rabisca. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>

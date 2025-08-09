@@ -1,0 +1,18 @@
+.area-campo-senha {
+  position: relative;
+}
+
+.campo-senha {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.botao-alternar-senha {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  transform: translateY(-50%);
+  font-size: 0.9em;
+  background-color: transparent;
+  border: none;
+}
