@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - O seu bloco de notas online</title>
+    <!-- Ícone de favoritos -->
+    <link rel="icon" href="img/icone-fav.svg" type="image/svg+xml" />
+    <!-- Google Fonts - Fonte "Inter" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/principal.min.css" />
+    <link rel="stylesheet" href="css/index.min.css" />
+    <link rel="stylesheet" href="css/links.min.css" />
+    <!-- JavaScript -->
+    <script src="js/principal.min.js" defer></script>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header class="cabecalho">
+      <div class="area-logo">
+        <img src="img/logo.svg" alt="Logo do Rabisca" class="img-logo" />
+        <h1 class="titulo-principal">Rabisca</h1>
+      </div>
+      <nav class="barra-nav-principal">
+        <button
+          type="button"
+          id="botao-abrir-barra-nav-lateral"
+          class="botao-alternar-barra-nav-lateral botao-abrir-barra-nav-lateral"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-nav-principal">
+          <li>
+            <a href="index.html" class="link-nav-principal">
+              <i class="bi bi-house"></i> Início
+            </a>
+          </li>
+          <li>
+            <a href="cadastrar-usuario.html" class="link-nav-principal">
+              <i class="bi bi-person-add"></i> Cadastrar-se
+            </a>
+          </li>
+          <li>
+            <a href="entrar.html" class="link-nav-principal">
+              <i class="bi bi-box-arrow-in-right"></i> Faça login
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <section class="secao-intro">
+        <h2 class="titulo-secao-intro">
+          Suas anotações, sempre ao seu alcance
+        </h2>
+        <p class="txt-secao-intro">
+          Tire suas ideias da cabeça sem complicação.
+          <i class="bi bi-emoji-smile"></i>
+        </p>
+        <div class="area-botoes-chamada-acao">
+          <a href="cadastrar-usuario.html" class="botao botao-chamada-acao">
+            Cadastrar-se <i class="bi bi-person-add"></i>
+          </a>
+          <a href="entrar.html" class="botao botao-chamada-acao">
+            Faça login <i class="bi bi-box-arrow-in-right"></i>
+          </a>
+        </div>
+      </section>
+      <figure class="area-img-destaque">
+        <img
+          src="img/destaque.svg"
+          alt="Pessoa anotando em um bloco de notas. Imagem que serve como destaque."
+          class="img-destaque"
+        />
+        <figcaption class="legenda-img-destaque">
+          Créditos da imagem:
+          <a href="https://storyset.com/work" target="_blank" class="link"
+            >Storyset</a
+          >
+        </figcaption>
+      </figure>
+    </main>
+
+    <!-- Barra de navegação lateral -->
+    <div id="fundo-barra-nav-lateral" class="fundo esconder"></div>
+    <nav id="barra-nav-lateral" class="barra-nav-lateral esconder">
+      <button
+        type="button"
+        id="botao-fechar-barra-nav-lateral"
+        class="botao-alternar-barra-nav-lateral botao-fechar-barra-nav-lateral"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-nav-lateral">
+        <li>
+          <a href="index.html" class="link-nav-lateral">
+            <i class="bi bi-house"></i> Início
+          </a>
+        </li>
+        <li>
+          <a href="cadastrar-usuario.html" class="link-nav-lateral">
+            <i class="bi bi-person-add"></i> Cadastrar-se
+          </a>
+        </li>
+        <li>
+          <a href="entrar.html" class="link-nav-lateral">
+            <i class="bi bi-box-arrow-in-right"></i> Faça login
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Caixa de diálogo -->
+    <div id="fundo-dialogo" class="fundo esconder"></div>
+    <div id="dialogo" class="dialogo esconder">
+      <h3 class="titulo-dialogo">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h3>
+      <p id="txt-dialogo" class="txt-dialogo"></p>
+      <button
+        type="button"
+        id="botao-fechar-dialogo"
+        class="botao botao-fechar-dialogo"
+      >
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+      <p class="creditos">&copy; 2025 Rabisca. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>

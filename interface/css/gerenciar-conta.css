@@ -1,0 +1,28 @@
+.conteudo-principal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+  width: 80rem;
+}
+
+.secao {
+  flex: 1 1 35rem;
+}
+
+.destaque {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.botao-deletar {
+  align-self: flex-start;
+  font-size: 1.5rem;
+  background-color: #cc0000;
+  padding: 1.5rem 1.7rem;
+}
+
+.botao-deletar:hover {
+  color: #cc0000;
+  background-color: transparent;
+  border-color: #cc0000;
+}
