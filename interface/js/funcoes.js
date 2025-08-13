@@ -53,7 +53,7 @@ const limparVal = (val) => val.trim();
 
 // Função que valida um campo obrigatório
 const validarCampoObrigatorio = (campo, valCampo, qtdCarac) =>
-  validarCampo(campo) && valCampo !== "" && valCampo.length <= qtdCarac;
+  validarCampo(campo) && !valCampo && valCampo.length <= qtdCarac;
 
 // Função que executa validações HTML5
 const validarCampo = (campo) => campo.checkValidity();
@@ -61,7 +61,7 @@ const validarCampo = (campo) => campo.checkValidity();
 // Função que limpa um campo e o deixa focado em telas maiores ou iguais a 992px
 const limparCampo = (campo) => {
   campo.value = "";
-  if (window.innerWidth >= 992) campo.focus();
+  if (window.innerWidth >= 1200) campo.focus();
 };
 
 // Função que converte um valor para número

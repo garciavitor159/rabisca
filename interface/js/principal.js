@@ -28,7 +28,7 @@ const alternarVisibilidade = (els, exibir) =>
 // Função que alterna a visibilidade da caixa de diálogo
 const alternarDialogo = (exibir = false, msg = "") => {
   alternarVisibilidade([fundoDialogo, dialogo], exibir);
-  if (exibir) txtDialogo.textContent = msg;
+  if (exibir && msg) txtDialogo.textContent = msg;
   else setTimeout(() => (txtDialogo.textContent = msg), 500);
 };
 

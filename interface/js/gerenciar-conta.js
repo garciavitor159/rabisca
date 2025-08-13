@@ -11,7 +11,7 @@ formEditar.addEventListener("submit", (e) => {
   e.preventDefault();
   const retorno = validarDadosUsuario(nome, email, senha);
 
-  if (retorno.estadoErro) {
+  if (retorno.estadoErro && retorno.msgErro && retorno.campoErro) {
     alternarDialogo(true, retorno.msgErro);
     limparCampo(retorno.campoErro);
     return;
