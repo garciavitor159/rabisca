@@ -1,0 +1,41 @@
+.area-campo {
+  margin-bottom: 1.6rem;
+}
+
+.rotulo {
+  display: inline-block;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.campo-obrigatorio {
+  display: inline-block;
+  color: #cc0000;
+}
+
+.campo {
+  display: block;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 1.5rem 1.3rem;
+  border: 0.1rem solid #aaa;
+  border-radius: 0.8rem;
+}
+
+.campo:focus {
+  border-color: #495672;
+  outline: none;
+  box-shadow: 0 0 1rem #495672;
+}
+
+.botao-enviar {
+  font-size: 1.5rem;
+  background-color: #495672;
+  padding: 1.5rem 1.7rem;
+}
+
+.botao-enviar:hover {
+  color: #495672;
+  background-color: transparent;
+  border-color: #495672;
+}
