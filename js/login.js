@@ -1,14 +1,12 @@
 import {
   form,
-  nome,
   email,
   senha,
   limparVal,
   validarCampo,
-  validarValObrigatorio,
+  validarEmail,
   validarMaxCarac,
   exibirErro,
-  validarEmail,
   validarSenha,
   enviarDados,
   alternarModalMsg,
@@ -18,7 +16,7 @@ import {
   exibirErroConsole,
 } from "./utilitarios.js";
 
-async function cadastrarUsuario(dados) {
+async function efetuarLogin(dados) {
   try {
     const { deuErro, msg, campoErro } = await enviarDados(dados, "POST");
 
@@ -26,9 +24,6 @@ async function cadastrarUsuario(dados) {
       alternarModalMsg(true, msg);
 
       switch (campoErro) {
-        case "nome":
-          limparCampo(nome);
-          break;
         case "email":
           limparCampo(email);
           break;
@@ -36,37 +31,23 @@ async function cadastrarUsuario(dados) {
           limparCampo(senha);
           break;
         default:
-          limparCampos([nome, email, senha]);
+          limparCampos([email, senha]);
       }
 
       return;
     }
 
-    redirecionar({ txt: msg, deveExibir: true }, "login.html");
+    redirecionar({ txt: msg, deveExibir: true }, "criar-nota.html");
   } catch (err) {
     exibirErroConsole(`Erro: ${err}.`);
-    alternarModalMsg(true, "Erro: Não foi possível efetuar seu cadastro.");
+    alternarModalMsg(true, "Erro: Não foi possível efetuar seu login.");
   }
 }
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  const valNome = limparVal(nome.value);
   const valEmail = limparVal(email.value);
   const valSenha = limparVal(senha.value);
-
-  if (
-    !validarCampo(nome) ||
-    !validarValObrigatorio(valNome) ||
-    !validarMaxCarac(valNome, 50)
-  ) {
-    exibirErro(
-      "Erro: O nome é obrigatório e deve conter até 50 caracteres.",
-      nome
-    );
-
-    return;
-  }
 
   if (
     !validarCampo(email) ||
@@ -90,9 +71,8 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  cadastrarUsuario({
-    acao: "cadastrar_usuario",
-    nome: valNome,
+  efetuarLogin({
+    acao: "efetuar_login",
     email: valEmail,
     senha: valSenha,
   });

@@ -28,4 +28,12 @@ BEGIN
     INSERT INTO usuarios (nome, email, senha) VALUES (proc_nome, proc_email, proc_senha);
 END//
 
+DROP PROCEDURE IF EXISTS proc_efetuar_login//
+CREATE PROCEDURE proc_efetuar_login (IN proc_email VARCHAR(80))
+BEGIN
+	SELECT id AS id_usuario, senha AS senha_usuario
+    FROM usuarios
+    WHERE email = proc_email;
+END//
+
 delimiter ;

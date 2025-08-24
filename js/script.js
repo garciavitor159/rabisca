@@ -2,6 +2,7 @@ import {
   fundoModalMsg,
   alternarVisibilidade,
   enviarDados,
+  exibirErroConsole,
   alternarModalMsg,
   adicionarEventoClique,
 } from "./utilitarios.js";
@@ -13,10 +14,8 @@ const botaoFecharSidebar = document.querySelector("#botaoFecharSidebar");
 const botaoFecharModalMsg = document.querySelector("#botaoFecharModalMsg");
 const creditos = document.querySelector("#creditos");
 
-function alternarSidebar(exibir = false) {
-  if (fundoSidebar && sidebar) {
-    alternarVisibilidade([fundoSidebar, sidebar], exibir);
-  }
+function alternarSidebar(exibir) {
+  alternarVisibilidade([fundoSidebar, sidebar], exibir);
 }
 
 async function resgatarAnoAtual() {
@@ -27,50 +26,35 @@ async function resgatarAnoAtual() {
     );
 
     if (deuErro) {
-      console.error(msg);
+      exibirErroConsole(msg);
       return;
     }
 
-    const elAnoAtual = creditos?.querySelector("span");
-
-    if (elAnoAtual) {
-      elAnoAtual.textContent = anoAtual;
-    }
+    const elAnoAtual = creditos.querySelector("span");
+    elAnoAtual.textContent = anoAtual;
   } catch (err) {
-    console.error(`Erro: Não foi possível resgatar o ano atual (${err}).`);
+    exibirErroConsole(`Erro: ${err}.`);
   }
 }
 
 function exibirMsg() {
-  let msg = null;
+  const msg = JSON.parse(localStorage.getItem("msg"));
 
-  try {
-    msg = JSON.parse(localStorage.getItem("msg"));
-  } catch (err) {
-    msg = null;
-  }
-
-  if (msg) {
+  if (msg !== null) {
     const { txt, deveExibir } = msg;
 
     if (deveExibir) {
       alternarModalMsg(true, txt);
     } else {
-      console.error(txt);
+      console.log(txt);
     }
 
     localStorage.removeItem("msg");
   }
 }
 
-window.addEventListener("pageshow", function (e) {
-  if (e.persisted) {
-    this.location.reload();
-  }
-});
-
 window.addEventListener("pageshow", function () {
-  alternarSidebar();
+  alternarSidebar(false);
 });
 
 window.addEventListener("load", function () {
@@ -80,31 +64,25 @@ window.addEventListener("load", function () {
 
 window.addEventListener("resize", function () {
   if (this.innerWidth >= 768) {
-    alternarSidebar();
+    alternarSidebar(false);
   }
 });
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    alternarSidebar();
-    alternarModalMsg();
+    alternarSidebar(false);
+    alternarModalMsg(false, "");
   }
 });
 
-if (botaoAbrirSidebar) {
-  adicionarEventoClique([botaoAbrirSidebar], function () {
-    alternarSidebar(true);
-  });
-}
+adicionarEventoClique([botaoAbrirSidebar], function () {
+  alternarSidebar(true);
+});
 
-if (fundoSidebar && botaoFecharSidebar) {
-  adicionarEventoClique([fundoSidebar, botaoFecharSidebar], function () {
-    alternarSidebar();
-  });
-}
+adicionarEventoClique([fundoSidebar, botaoFecharSidebar], function () {
+  alternarSidebar(false);
+});
 
-if (fundoModalMsg && botaoFecharModalMsg) {
-  adicionarEventoClique([fundoModalMsg, botaoFecharModalMsg], function () {
-    alternarModalMsg();
-  });
-}
+adicionarEventoClique([fundoModalMsg, botaoFecharModalMsg], function () {
+  alternarModalMsg(false);
+});

@@ -1,63 +1,58 @@
 <?php
-function limpar_val($val)
+function eh_vazio($val)
 {
-    if (eh_string($val)) {
-        $val = trim($val);
-        $val = htmlspecialchars($val, ENT_QUOTES, "UTF-8");
-        return $val;
+    if (empty($val)) {
+        return true;
     }
 
-    return "";
+    return false;
 }
 
-function eh_string($val)
+function limpar_val($val)
 {
-    return boolval((is_string($val)));
+    return trim($val);
 }
 
 function retornar_resposta($resposta)
 {
-    if (!is_array($resposta)) {
-        echo json_encode(["deuErro" => true, "msg" => "Erro: Resposta inválida."]);
-        exit;
-    }
-
     echo json_encode($resposta);
     exit;
 }
 
-function validar_val_obrigatorio($val, $max_carac)
+function validar_val_obrigatorio($val)
 {
-    if (eh_string($val)) {
-        $val_limpo = limpar_val($val);
-        return boolval((!empty($val_limpo) && strlen($val_limpo) <= $max_carac));
+    if (!eh_vazio($val)) {
+        return true;
     }
 
     return false;
 }
 
-function validar_email($val_email)
+function validar_max_carac($val, $max_carac)
 {
-    if (eh_string($val_email)) {
-        $val_email_limpo = limpar_val($val_email);
-        $exp_reg_email = "/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/";
-
-        return boolval((
-            filter_var($val_email_limpo, FILTER_VALIDATE_EMAIL) &&
-            preg_match($exp_reg_email, $val_email_limpo) &&
-            strlen($val_email_limpo) <= 80
-        ));
+    if (strlen($val) <= $max_carac) {
+        return true;
     }
 
     return false;
 }
 
-function validar_senha($val_senha)
+function validar_email($email)
 {
-    if (eh_string($val_senha)) {
-        $val_senha_limpo = limpar_val($val_senha);
-        $exp_reg_senha = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,30}$/";
-        return boolval((preg_match($exp_reg_senha, $val_senha_limpo)));
+    if (
+        filter_var($email, FILTER_VALIDATE_EMAIL) !== false &&
+        preg_match("/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/", $email) === 1
+    ) {
+        return true;
+    }
+
+    return false;
+}
+
+function validar_senha($senha)
+{
+    if (preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,30}$/", $senha) === 1) {
+        return true;
     }
 
     return false;
@@ -65,5 +60,9 @@ function validar_senha($val_senha)
 
 function validar_conexao($pdo)
 {
-    return boolval(($pdo instanceof PDO));
+    if ($pdo instanceof PDO) {
+        return true;
+    }
+
+    return false;
 }

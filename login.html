@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - Login</title>
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/conteudos-principais.css" />
+    <link rel="stylesheet" href="css/titulos.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/campos-senha.css" />
+    <link rel="stylesheet" href="css/txts-alternar-forms.css" />
+    <link rel="stylesheet" href="css/links.css" />
+    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/login.js"></script>
+    <script type="module" src="js/alternar-senhas.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="area-logo">
+        <img src="imgs/logo.svg" alt="Logo do Rabisca" class="img-logo" />
+        <h1 class="txt-logo">Rabisca</h1>
+      </div>
+      <nav class="navbar">
+        <button
+          type="button"
+          id="botaoAbrirSidebar"
+          class="botao-alternar-sidebar botao-abrir-sidebar"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-navbar">
+          <li class="item-lista-navbar">
+            <a href="index.html" class="link-navbar">
+              <i class="bi bi-house"></i> Home
+            </a>
+          </li>
+          <li class="item-lista-navbar">
+            <a href="cadastrar-usuario.html" class="link-navbar">
+              <i class="bi bi-person-add"></i> Cadastre-se
+            </a>
+          </li>
+          <li class="item-lista-navbar">
+            <a href="login.html" class="link-navbar">
+              <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="conteudo-principal">
+      <h2 class="titulo">Login <i class="bi bi-box-arrow-in-right"></i></h2>
+      <form id="form" novalidate>
+        <div class="area-campo">
+          <label for="email" class="rotulo">
+            E-mail: <span class="campo-obrigatorio">*</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="campo"
+            placeholder="nome@exemplo.br"
+            maxlength="80"
+            required
+          />
+        </div>
+        <div class="area-campo">
+          <label for="senha" class="rotulo">
+            Senha: <span class="campo-obrigatorio">*</span>
+          </label>
+          <div class="area-campo-senha">
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              class="campo campo-senha"
+              placeholder="Mínimo de 8 caracteres"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,30}$"
+              title="A senha é obrigatória e deve conter entre 8 e 30 caracteres, incluindo uma letra minúscula, uma letra maiúscula, um número e um símbolo."
+              maxlength="30"
+              required
+            />
+            <button
+              type="button"
+              id="botaoAlternarSenha"
+              class="botao-alternar-senha"
+            >
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="botao botao-enviar">
+          Login <i class="bi bi-box-arrow-in-right"></i>
+        </button>
+      </form>
+      <p class="txt-alternar-forms">
+        Ainda não tem conta?
+        <a href="cadastrar-usuario.html" class="link">Cadastre-se!</a>
+      </p>
+    </main>
+    <div id="fundoSidebar" class="fundo esconder"></div>
+    <nav id="sidebar" class="sidebar esconder">
+      <button
+        type="button"
+        id="botaoFecharSidebar"
+        class="botao-alternar-sidebar botao-fechar-sidebar"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-sidebar">
+        <li>
+          <a href="index.html" class="link-sidebar">
+            <i class="bi bi-house"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="cadastrar-usuario.html" class="link-sidebar">
+            <i class="bi bi-person-add"></i> Cadastre-se
+          </a>
+        </li>
+        <li>
+          <a href="login.html" class="link-sidebar">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div id="fundoModalMsg" class="fundo esconder"></div>
+    <div id="modalMsg" class="modal esconder">
+      <h3 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h3>
+      <p id="txtModalMsg" class="txt-modal"></p>
+      <button
+        type="button"
+        id="botaoFecharModalMsg"
+        class="botao botao-fechar-modal"
+      >
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+    <footer class="rodape">
+      <p id="creditos" class="creditos">
+        &copy; <span>2025</span> Rabisca. Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>
