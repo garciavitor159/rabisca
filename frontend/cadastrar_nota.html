@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rabisca - Altere sua senha</title>
+    <title>Rabisca - Cadastre uma nota</title>
     <!-- Favicon -->
     <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
     <!-- Bootstrap Icons -->
@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="css/conteudos_principais.css" />
     <link rel="stylesheet" href="css/titulos.css" />
     <link rel="stylesheet" href="css/forms.css" />
-    <link rel="stylesheet" href="css/campos_senha.css" />
+    <link rel="stylesheet" href="css/campos_conteudo.css" />
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JavaScript -->
     <script type="module" src="js/scripts.js"></script>
     <script type="module" src="js/verificar_sessao_ultimo_acesso.js"></script>
-    <script type="module" src="js/alterar_senha.js"></script>
-    <script type="module" src="js/alternar_senhas.js"></script>
+    <script type="module" src="js/efetuar_logout.js"></script>
+    <script type="module" src="js/cadastrar_nota.js"></script>
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -41,18 +41,33 @@
         </button>
         <ul class="lista-navbar">
           <li>
-            <a href="index.html" class="link-navbar"
-              ><i class="bi bi-house"></i> Home</a
+            <a href="painel.html" class="link-navbar"
+              ><i class="bi bi-speedometer2"></i> Painel</a
             >
           </li>
           <li>
-            <a href="cadastrar_usuario.html" class="link-navbar"
-              ><i class="bi bi-person-add"></i> Cadastre-se</a
+            <a href="cadastrar_nota.html" class="link-navbar"
+              ><i class="bi bi-card-text"></i> Cadastre uma nota</a
             >
           </li>
           <li>
-            <a href="login.html" class="link-navbar"
-              ><i class="bi bi-box-arrow-in-right"></i> Login</a
+            <a href="consultar_notas.html" class="link-navbar"
+              ><i class="bi bi-search"></i> Consulte suas notas</a
+            >
+          </li>
+          <li>
+            <a href="editar_dados.html" class="link-navbar"
+              ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+            >
+          </li>
+          <li>
+            <a href="deletar_conta.html" class="link-navbar"
+              ><i class="bi bi-trash"></i> Delete sua conta</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="link-navbar link-logout"
+              ><i class="bi bi-box-arrow-in-left"></i> Logout</a
             >
           </li>
         </ul>
@@ -60,34 +75,37 @@
     </header>
     <!-- Conteúdo principal -->
     <main class="conteudo-principal">
-      <h2 class="titulo">Altere sua senha <i class="bi bi-unlock"></i></h2>
+      <h2 class="titulo">Cadastre uma nota <i class="bi bi-card-text"></i></h2>
       <form id="form" novalidate>
         <div class="container-campo">
-          <label for="senha" class="label"
-            >Nova senha: <span class="campo-obrigatorio">*</span></label
+          <label for="titulo" class="label"
+            >Título: <span class="campo-obrigatorio">*</span></label
           >
-          <div class="container-campo-senha">
-            <input
-              type="password"
-              name="senha"
-              id="senha"
-              class="campo campo-senha"
-              placeholder="Digite uma senha"
-              minlength="8"
-              maxlength="30"
-              required
-            />
-            <button
-              type="button"
-              id="botaoAlternarSenha"
-              class="botao-alternar-senha"
-            >
-              <i class="bi bi-eye"></i>
-            </button>
-          </div>
+          <input
+            type="text"
+            name="titulo"
+            id="titulo"
+            class="campo"
+            placeholder="Digite um título para sua nota"
+            maxlength="80"
+            required
+          />
+        </div>
+        <div class="container-campo">
+          <label for="conteudo" class="label"
+            >Conteúdo: <span class="campo-obrigatorio">*</span></label
+          >
+          <textarea
+            name="conteudo"
+            id="conteudo"
+            class="campo campo-conteudo"
+            placeholder="Digite um conteúdo para sua nota"
+            maxlength="200"
+            required
+          ></textarea>
         </div>
         <button type="submit" class="botao botao-enviar">
-          Alterar <i class="bi bi-unlock"></i>
+          Cadastrar <i class="bi bi-card-text"></i>
         </button>
       </form>
     </main>
@@ -102,18 +120,33 @@
       </button>
       <ul class="lista-sidebar">
         <li>
-          <a href="index.html" class="link-sidebar"
-            ><i class="bi bi-house"></i> Home</a
+          <a href="painel.html" class="link-sidebar"
+            ><i class="bi bi-speedometer2"></i> Painel</a
           >
         </li>
         <li>
-          <a href="cadastrar_usuario.html" class="link-sidebar"
-            ><i class="bi bi-person-add"></i> Cadastre-se</a
+          <a href="cadastrar_nota.html" class="link-sidebar"
+            ><i class="bi bi-card-text"></i> Cadastre uma nota</a
           >
         </li>
         <li>
-          <a href="login.html" class="link-sidebar"
-            ><i class="bi bi-box-arrow-in-right"></i> Login</a
+          <a href="consultar_notas.html" class="link-sidebar"
+            ><i class="bi bi-search"></i> Consulte suas notas</a
+          >
+        </li>
+        <li>
+          <a href="editar_dados.html" class="link-sidebar"
+            ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+          >
+        </li>
+        <li>
+          <a href="deletar_conta.html" class="link-sidebar"
+            ><i class="bi bi-trash"></i> Delete sua conta</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="link-sidebar link-logout"
+            ><i class="bi bi-box-arrow-in-left"></i> Logout</a
           >
         </li>
       </ul>

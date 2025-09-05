@@ -8,6 +8,8 @@ export const email = document.querySelector("#email");
 export const senha = document.querySelector("#senha");
 export const perguntaSeguranca = document.querySelector("#perguntaSeguranca");
 export const resposta = document.querySelector("#resposta");
+export const titulo = document.querySelector("#titulo");
+export const conteudo = document.querySelector("#conteudo");
 export const overlayModalMsgs = document.querySelector("#overlayModalMsgs");
 const modalMsgs = document.querySelector("#modalMsgs");
 const txtModalMsgs = document.querySelector("#txtModalMsgs");
@@ -166,4 +168,14 @@ export const limparCampos = (campos) => {
   campos.forEach((campo) => {
     limparCampo(campo);
   });
+};
+
+// Função que converte um valor para número
+export const converterNum = (val) => {
+  return Number(val);
+};
+
+// Função que valida os IDs
+export const validarID = (id) => {
+  return Number.isInteger(id) && id >= 1;
 };

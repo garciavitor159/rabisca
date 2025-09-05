@@ -21,7 +21,7 @@ adicionarEventoLoad(async () => {
     return;
   }
 
-  redirecionar(msg, "validar_pergunta_seguranca.html");
+  // redirecionar(msg, "validar_pergunta_seguranca.html");
 });
 
 adicionarEventoSubmit(form, async (e) => {

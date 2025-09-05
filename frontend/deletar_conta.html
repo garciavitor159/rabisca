@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rabisca - Valide sua pergunta de segurança</title>
+    <title>Rabisca - Delete sua conta</title>
     <!-- Favicon -->
     <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
     <!-- Bootstrap Icons -->
@@ -16,13 +16,15 @@
     <link rel="stylesheet" href="css/conteudos_principais.css" />
     <link rel="stylesheet" href="css/titulos.css" />
     <link rel="stylesheet" href="css/forms.css" />
-    <link rel="stylesheet" href="css/botoes_forms.css" />
+    <link rel="stylesheet" href="css/campos_senha.css" />
+    <link rel="stylesheet" href="css/deletar_conta.css" />
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JavaScript -->
     <script type="module" src="js/scripts.js"></script>
-    <script type="module" src="js/excluir_sessoes_autorizacao.js"></script>
-    <script type="module" src="js/validar_pergunta_seguranca.js"></script>
+    <script type="module" src="js/verificar_sessao_ultimo_acesso.js"></script>
+    <script type="module" src="js/efetuar_logout.js"></script>
+    <script type="module" src="js/deletar_conta.js"></script>
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -40,18 +42,33 @@
         </button>
         <ul class="lista-navbar">
           <li>
-            <a href="index.html" class="link-navbar"
-              ><i class="bi bi-house"></i> Home</a
+            <a href="painel.html" class="link-navbar"
+              ><i class="bi bi-speedometer2"></i> Painel</a
             >
           </li>
           <li>
-            <a href="cadastrar_usuario.html" class="link-navbar"
-              ><i class="bi bi-person-add"></i> Cadastre-se</a
+            <a href="cadastrar_nota.html" class="link-navbar"
+              ><i class="bi bi-card-text"></i> Cadastre uma nota</a
             >
           </li>
           <li>
-            <a href="login.html" class="link-navbar"
-              ><i class="bi bi-box-arrow-in-right"></i> Login</a
+            <a href="consultar_notas.html" class="link-navbar"
+              ><i class="bi bi-search"></i> Consulte suas notas</a
+            >
+          </li>
+          <li>
+            <a href="editar_dados.html" class="link-navbar"
+              ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+            >
+          </li>
+          <li>
+            <a href="deletar_conta.html" class="link-navbar"
+              ><i class="bi bi-trash"></i> Delete sua conta</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="link-navbar link-logout"
+              ><i class="bi bi-box-arrow-in-left"></i> Logout</a
             >
           </li>
         </ul>
@@ -59,9 +76,7 @@
     </header>
     <!-- Conteúdo principal -->
     <main class="conteudo-principal">
-      <h2 class="titulo">
-        Valide sua pergunta de segurança <i class="bi bi-check-square"></i>
-      </h2>
+      <h2 class="titulo">Delete sua conta <i class="bi bi-trash"></i></h2>
       <form id="form" novalidate>
         <div class="container-campo">
           <label for="email" class="label"
@@ -117,14 +132,9 @@
             required
           />
         </div>
-        <div class="container-botoes-form">
-          <button type="submit" class="botao botao-enviar">
-            Validar <i class="bi bi-check-square"></i>
-          </button>
-          <a href="javascript:history.back()" class="botao botao-voltar"
-            >Voltar <i class="bi bi-arrow-left-square"></i
-          ></a>
-        </div>
+        <button type="submit" class="botao botao-enviar botao-deletar">
+          Deletar <i class="bi bi-trash"></i>
+        </button>
       </form>
     </main>
     <!-- Barra lateral -->
@@ -138,18 +148,33 @@
       </button>
       <ul class="lista-sidebar">
         <li>
-          <a href="index.html" class="link-sidebar"
-            ><i class="bi bi-house"></i> Home</a
+          <a href="painel.html" class="link-sidebar"
+            ><i class="bi bi-speedometer2"></i> Painel</a
           >
         </li>
         <li>
-          <a href="cadastrar_usuario.html" class="link-sidebar"
-            ><i class="bi bi-person-add"></i> Cadastre-se</a
+          <a href="cadastrar_nota.html" class="link-sidebar"
+            ><i class="bi bi-card-text"></i> Cadastre uma nota</a
           >
         </li>
         <li>
-          <a href="login.html" class="link-sidebar"
-            ><i class="bi bi-box-arrow-in-right"></i> Login</a
+          <a href="consultar_notas.html" class="link-sidebar"
+            ><i class="bi bi-search"></i> Consulte suas notas</a
+          >
+        </li>
+        <li>
+          <a href="editar_dados.html" class="link-sidebar"
+            ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+          >
+        </li>
+        <li>
+          <a href="deletar_conta.html" class="link-sidebar"
+            ><i class="bi bi-trash"></i> Delete sua conta</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="link-sidebar link-logout"
+            ><i class="bi bi-box-arrow-in-left"></i> Logout</a
           >
         </li>
       </ul>

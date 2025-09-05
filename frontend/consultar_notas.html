@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - Consulte suas notas</title>
+    <!-- Favicon -->
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/conteudos_principais.css" />
+    <link rel="stylesheet" href="css/titulos.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/consultar_notas.css" />
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JavaScript -->
+    <script type="module" src="js/scripts.js"></script>
+    <script type="module" src="js/verificar_sessao_ultimo_acesso.js"></script>
+    <script type="module" src="js/efetuar_logout.js"></script>
+    <script type="module" src="js/consultar_notas.js"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header>
+      <div class="container-logo">
+        <img src="imgs/logo.svg" alt="Logo do Rabisca" class="logo" />
+        <h1 class="titulo-principal">Rabisca</h1>
+      </div>
+      <nav class="navbar">
+        <button
+          id="botaoAbrirSidebar"
+          class="botao-alternar-sidebar botao-abrir-sidebar"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-navbar">
+          <li>
+            <a href="painel.html" class="link-navbar"
+              ><i class="bi bi-speedometer2"></i> Painel</a
+            >
+          </li>
+          <li>
+            <a href="cadastrar_nota.html" class="link-navbar"
+              ><i class="bi bi-card-text"></i> Cadastre uma nota</a
+            >
+          </li>
+          <li>
+            <a href="consultar_notas.html" class="link-navbar"
+              ><i class="bi bi-search"></i> Consulte suas notas</a
+            >
+          </li>
+          <li>
+            <a href="editar_dados.html" class="link-navbar"
+              ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+            >
+          </li>
+          <li>
+            <a href="deletar_conta.html" class="link-navbar"
+              ><i class="bi bi-trash"></i> Delete sua conta</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="link-navbar link-logout"
+              ><i class="bi bi-box-arrow-in-left"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <h2 class="titulo">Consulte suas notas <i class="bi bi-search"></i></h2>
+      <form id="form" novalidate>
+        <div class="container-campo">
+          <label for="pesquisa" class="label"
+            >Pesquise por uma nota:
+            <span class="campo-obrigatorio">*</span></label
+          >
+          <input
+            type="search"
+            name="pesquisa"
+            id="pesquisa"
+            class="campo"
+            placeholder="Ex: Tomar banho 16h00"
+            maxlength="200"
+            required
+          />
+        </div>
+        <button type="submit" class="botao botao-enviar">
+          Pesquisar <i class="bi bi-search"></i>
+        </button>
+      </form>
+      <div id="containerNotas" class="container-notas">
+        <section class="nota">
+          <h3 class="titulo-nota">Título de teste 1</h3>
+          <p class="txt-nota">Conteúdo de teste 1</p>
+          <div class="container-acoes-nota">
+            <a
+              href="editar_nota.html?id=1&titulo=Título de teste 1&conteudo=Conteúdo de teste 1"
+              class="botao botao-acao-nota botao-editar"
+              >Editar <i class="bi bi-pencil-square"></i
+            ></a>
+            <button data-id="1" class="botao botao-acao-nota botao-deletar">
+              Deletar <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </section>
+        <section class="nota">
+          <h3 class="titulo-nota">Título de teste 2</h3>
+          <p class="txt-nota">Conteúdo de teste 2</p>
+          <div class="container-acoes-nota">
+            <a
+              href="editar_nota.html?id=2&titulo=Título de teste 2&conteudo=Conteúdo de teste 2"
+              class="botao botao-acao-nota botao-editar"
+              >Editar <i class="bi bi-pencil-square"></i
+            ></a>
+            <button data-id="2" class="botao botao-acao-nota botao-deletar">
+              Deletar <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </section>
+        <section class="nota">
+          <h3 class="titulo-nota">Título de teste 3</h3>
+          <p class="txt-nota">Conteúdo de teste 3</p>
+          <div class="container-acoes-nota">
+            <a
+              href="editar_nota.html?id=3&titulo=Título de teste 3&conteudo=Conteúdo de teste 3"
+              class="botao botao-acao-nota botao-editar"
+              >Editar <i class="bi bi-pencil-square"></i
+            ></a>
+            <button data-id="3" class="botao botao-acao-nota botao-deletar">
+              Deletar <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </section>
+        <section class="nota">
+          <h3 class="titulo-nota">Título de teste 4</h3>
+          <p class="txt-nota">Conteúdo de teste 4</p>
+          <div class="container-acoes-nota">
+            <a
+              href="editar_nota.html?id=4&titulo=Título de teste 4&conteudo=Conteúdo de teste 4"
+              class="botao botao-acao-nota botao-editar"
+              >Editar <i class="bi bi-pencil-square"></i
+            ></a>
+            <button data-id="4" class="botao botao-acao-nota botao-deletar">
+              Deletar <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Template de uma nota -->
+    <template id="templateNota">
+      <section class="nota">
+        <h3 class="titulo-nota"></h3>
+        <p class="txt-nota"></p>
+        <div class="container-acoes-nota">
+          <a href="#" class="botao botao-acao-nota botao-editar"
+            >Editar <i class="bi bi-pencil-square"></i
+          ></a>
+          <button data-id="#" class="botao botao-acao-nota botao-deletar">
+            Deletar <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </section>
+    </template>
+    <!-- Barra lateral -->
+    <div id="overlaySidebar" class="overlay escondido"></div>
+    <nav id="sidebar" class="sidebar escondido">
+      <button
+        id="botaoFecharSidebar"
+        class="botao-alternar-sidebar botao-fechar-sidebar"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-sidebar">
+        <li>
+          <a href="painel.html" class="link-sidebar"
+            ><i class="bi bi-speedometer2"></i> Painel</a
+          >
+        </li>
+        <li>
+          <a href="cadastrar_nota.html" class="link-sidebar"
+            ><i class="bi bi-card-text"></i> Cadastre uma nota</a
+          >
+        </li>
+        <li>
+          <a href="consultar_notas.html" class="link-sidebar"
+            ><i class="bi bi-search"></i> Consulte suas notas</a
+          >
+        </li>
+        <li>
+          <a href="editar_dados.html" class="link-sidebar"
+            ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+          >
+        </li>
+        <li>
+          <a href="deletar_conta.html" class="link-sidebar"
+            ><i class="bi bi-trash"></i> Delete sua conta</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="link-sidebar link-logout"
+            ><i class="bi bi-box-arrow-in-left"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- Modal de mensagens -->
+    <div id="overlayModalMsgs" class="overlay escondido"></div>
+    <div id="modalMsgs" class="modal escondido">
+      <h4 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h4>
+      <p id="txtModalMsgs" class="txt-modal"></p>
+      <button id="botaoFecharModalMsgs" class="botao botao-fechar-modal">
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+    <!-- Modal de confirmação -->
+    <div id="overlayModalConfirmacao" class="overlay escondido"></div>
+    <div id="modalConfirmacao" class="modal escondido">
+      <h4 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h4>
+      <p class="txt-modal">Tem certeza?</p>
+      <div class="container-botoes-confirmacao">
+        <button
+          id="botaoConfirmar"
+          class="botao botao-confirmacao botao-confirmar"
+        >
+          Sim <i class="bi bi-check-square"></i>
+        </button>
+        <button id="botaoNegar" class="botao botao-fechar-modal">
+          Não <i class="bi bi-x-square"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Rodapé -->
+    <footer class="rodape">
+      <p id="copyright" class="copyright">
+        &copy; <span>2025</span> Rabisca - Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>

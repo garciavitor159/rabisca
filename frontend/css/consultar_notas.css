@@ -1,0 +1,81 @@
+.conteudo-principal {
+  gap: 3.2rem;
+}
+
+.container-notas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+}
+
+.nota {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  flex: 1 1 30rem;
+  background-color: #fff;
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 1.6rem rgba(0, 0, 0, 0.5);
+}
+
+.nota.escondido {
+  display: none;
+}
+
+.titulo-nota {
+  font-size: 2rem;
+}
+
+.txt-nota {
+  font-size: 1.6rem;
+}
+
+.container-acoes-nota {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.botao-acao-nota,
+.botao-confirmacao {
+  font-size: 1.3rem;
+  padding: 1.3rem 1.5rem;
+}
+
+.botao-editar {
+  background-color: #008000;
+}
+
+.botao-editar:hover {
+  color: #008000;
+  background-color: transparent;
+  border-color: #008000;
+}
+
+.botao-deletar {
+  background-color: #cc0000;
+}
+
+.botao-deletar:hover {
+  color: #cc0000;
+  background-color: transparent;
+  border-color: #cc0000;
+}
+
+.container-botoes-confirmacao {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.botao-confirmar {
+  background-color: #495672;
+}
+
+.botao-confirmar:hover {
+  color: #495672;
+  background-color: transparent;
+  border-color: #495672;
+}

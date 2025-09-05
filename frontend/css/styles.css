@@ -228,8 +228,8 @@ span {
 
 /* Responsividade */
 
-/* Tablets (>= 768px) */
-@media (min-width: 768px) {
+/* Desktops (>= 992px) */
+@media (min-width: 992px) {
   .botao-abrir-sidebar {
     display: none;
   }

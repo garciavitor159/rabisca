@@ -1,0 +1,9 @@
+.botao-enviar.botao-deletar {
+  background-color: #cc0000;
+}
+
+.botao-enviar.botao-deletar:hover {
+  color: #cc0000;
+  background-color: transparent;
+  border-color: #cc0000;
+}
