@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - Altere sua senha</title>
+    <!-- Favicon -->
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/conteudos_principais.css" />
+    <link rel="stylesheet" href="css/titulos.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/campos_senha.css" />
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JavaScript -->
+    <script type="module" src="js/scripts.js"></script>
+    <script type="module" src="js/alterar_senha.js"></script>
+    <script type="module" src="js/alternar_senhas.js"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header>
+      <div class="container-logo">
+        <img src="imgs/logo.svg" alt="Logo do Rabisca" class="logo" />
+        <h1 class="titulo-principal">Rabisca</h1>
+      </div>
+      <nav class="navbar">
+        <button
+          id="botaoAbrirSidebar"
+          class="botao-alternar-sidebar botao-abrir-sidebar"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-navbar">
+          <li>
+            <a href="index.html" class="link-navbar"
+              ><i class="bi bi-house"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="cadastrar_usuario.html" class="link-navbar"
+              ><i class="bi bi-person-add"></i> Cadastre-se</a
+            >
+          </li>
+          <li>
+            <a href="login.html" class="link-navbar"
+              ><i class="bi bi-box-arrow-in-right"></i> Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <h2 class="titulo">Altere sua senha <i class="bi bi-unlock"></i></h2>
+      <form id="form" novalidate>
+        <div class="container-campo">
+          <label for="senha" class="label"
+            >Nova senha: <span class="campo-obrigatorio">*</span></label
+          >
+          <div class="container-campo-senha">
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              class="campo campo-senha"
+              placeholder="Digite uma senha"
+              minlength="8"
+              maxlength="30"
+              required
+            />
+            <button
+              type="button"
+              id="botaoAlternarSenha"
+              class="botao-alternar-senha"
+            >
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="botao botao-enviar">
+          Alterar <i class="bi bi-unlock"></i>
+        </button>
+      </form>
+    </main>
+    <!-- Barra lateral -->
+    <div id="overlaySidebar" class="overlay escondido"></div>
+    <nav id="sidebar" class="sidebar escondido">
+      <button
+        id="botaoFecharSidebar"
+        class="botao-alternar-sidebar botao-fechar-sidebar"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-sidebar">
+        <li>
+          <a href="index.html" class="link-sidebar"
+            ><i class="bi bi-house"></i> Home</a
+          >
+        </li>
+        <li>
+          <a href="cadastrar_usuario.html" class="link-sidebar"
+            ><i class="bi bi-person-add"></i> Cadastre-se</a
+          >
+        </li>
+        <li>
+          <a href="login.html" class="link-sidebar"
+            ><i class="bi bi-box-arrow-in-right"></i> Login</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- Modal de mensagens -->
+    <div id="overlayModalMsgs" class="overlay escondido"></div>
+    <div id="modalMsgs" class="modal escondido">
+      <h3 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h3>
+      <p id="txtModalMsgs" class="txt-modal"></p>
+      <button id="botaoFecharModalMsgs" class="botao botao-fechar-modal">
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+    <!-- Rodapé -->
+    <footer class="rodape">
+      <p id="copyright" class="copyright">
+        &copy; <span>2025</span> Rabisca - Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>
