@@ -1,4 +1,6 @@
 .conteudo-principal {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   gap: 3.2rem;
   padding-bottom: 8rem;
 }
@@ -7,7 +9,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  order: 1;
 }
 
 .titulo-secao-intro {
@@ -40,7 +41,6 @@
 }
 
 .container-img-destaque {
-  order: 0;
   text-align: center;
 }
 
@@ -63,10 +63,6 @@
     padding-left: 5rem;
   }
 
-  .secao-intro {
-    order: 0;
-  }
-
   .titulo-secao-intro,
   .txt-secao-intro {
     text-align: left;
@@ -74,9 +70,5 @@
 
   .container-botoes-cta {
     justify-content: flex-start;
-  }
-
-  .container-img-destaque {
-    order: 1;
   }
 }

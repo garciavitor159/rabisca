@@ -41,6 +41,7 @@ ul {
 a {
   display: inline-block;
   text-decoration: none;
+  text-align: center;
   line-height: normal;
 }
 
