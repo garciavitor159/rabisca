@@ -16,7 +16,7 @@ body {
   line-height: 1.5;
   color: #333;
   background-color: #f0f0f0;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 img {
@@ -201,14 +201,14 @@ span {
   min-height: 4rem;
 }
 
-.botao-fechar-modal {
+.botao-fechar-modal-msgs {
   align-self: flex-end;
   font-size: 1.3rem;
   background-color: #cc0000;
   padding: 1.3rem 1.5rem;
 }
 
-.botao-fechar-modal:hover {
+.botao-fechar-modal-msgs:hover {
   color: #cc0000;
   background-color: transparent;
   border-color: #cc0000;

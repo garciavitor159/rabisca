@@ -53,11 +53,13 @@
   border-color: #008000;
 }
 
-.botao-deletar {
+.botao-deletar,
+.botao-negar {
   background-color: #cc0000;
 }
 
-.botao-deletar:hover {
+.botao-deletar:hover,
+.botao-negar:hover {
   color: #cc0000;
   background-color: transparent;
   border-color: #cc0000;
