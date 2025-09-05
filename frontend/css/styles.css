@@ -184,7 +184,7 @@ span {
 }
 
 .modal.escondido {
-  top: -50%;
+  top: 0;
   opacity: 0;
   pointer-events: none;
 }
