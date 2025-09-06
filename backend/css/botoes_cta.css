@@ -1,0 +1,18 @@
+.container-botoes-cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.botao-cta {
+  font-size: 1.8rem;
+  background-color: #495672;
+  padding: 1.8rem 2rem;
+}
+
+.botao-cta:hover {
+  color: #495672;
+  background-color: transparent;
+  border-color: #495672;
+}

@@ -1,0 +1,183 @@
+// Variáveis e funções importadas
+import {
+  form,
+  adicionarEventoLoad,
+  enviarDados,
+  redirecionar,
+  adicionarEventoClick,
+  adicionarEventoKeydown,
+  converterNum,
+  validarID,
+  alternarModalMsgs,
+  alternarVisibilidade,
+  adicionarEventoSubmit,
+  limparVal,
+  validarCampoObrigatorio,
+  exibirErrTela,
+} from "./utils.js";
+
+// Elementos DOM e variáveis globais
+const pesquisa = document.querySelector("#pesquisa");
+const containerNotas = document.querySelector("#containerNotas");
+const templateNota = document.querySelector("#templateNota");
+
+const overlayModalConfirmacao = document.querySelector(
+  "#overlayModalConfirmacao"
+);
+
+const modalConfirmacao = document.querySelector("#modalConfirmacao");
+const botaoConfirmar = document.querySelector("#botaoConfirmar");
+const botaoNegar = document.querySelector("#botaoNegar");
+let id = null;
+
+// Funções
+
+// Função que alterna a visibilidade do modal de confirmação
+const alternarModalConfirmacao = (exibir) => {
+  alternarVisibilidade([overlayModalConfirmacao, modalConfirmacao], exibir);
+};
+
+// Função que reverte as notas para o estado padrão
+const reverterNotas = () => {
+  const notas = document.querySelectorAll(".nota");
+
+  notas.forEach((nota) => {
+    nota.classList.toggle("escondido", false);
+  });
+};
+
+adicionarEventoLoad(async () => {
+  const params = { acao: "consultar_notas" };
+  const url = "consultar_notas.php";
+  const metodo = "GET";
+  const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado, notas } = dados;
+
+  if (sucesso) {
+    notas.forEach((nota) => {
+      const { id, titulo, conteudo } = nota;
+      const cloneTemplateNota = templateNota.content.cloneNode(true);
+      const elNota = cloneTemplateNota.querySelector(".nota");
+      const tituloNota = elNota.querySelector(".titulo-nota");
+      tituloNota.textContent = titulo;
+      const txtNota = elNota.querySelector(".txt-nota");
+      txtNota.textContent = conteudo;
+      const botaoEditar = elNota.querySelector(".botao-editar");
+      const paramsEdicao = { id: id, titulo: titulo, conteudo: conteudo };
+      const paramsEdicaoURL = new URLSearchParams(paramsEdicao).toString();
+      botaoEditar.href = `editar_nota.html?${paramsEdicaoURL}`;
+      const botaoDeletar = elNota.querySelector(".botao-deletar");
+      botaoDeletar.dataset.id = id;
+      containerNotas.appendChild(elNota);
+    });
+
+    return;
+  }
+
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
+  redirecionar(msg, "cadastrar_nota.html");
+});
+
+adicionarEventoClick([document], (e) => {
+  const elAlvo = e.target;
+
+  if (elAlvo.classList.contains("botao-deletar")) {
+    const valID = converterNum(elAlvo.dataset.id);
+
+    if (!validarID(valID)) {
+      alternarModalMsgs(
+        true,
+        "Erro: O ID é obrigatório e deve ser um número inteiro maior ou igual a 1."
+      );
+
+      return;
+    }
+
+    id = valID;
+    alternarModalConfirmacao(true);
+  }
+});
+
+adicionarEventoKeydown(document, (e) => {
+  if (e.key === "Escape") {
+    alternarModalConfirmacao(false);
+  }
+});
+
+adicionarEventoSubmit(form, (e) => {
+  e.preventDefault();
+  const valPesquisa = limparVal(pesquisa.value);
+
+  if (!validarCampoObrigatorio(pesquisa, valPesquisa, 200)) {
+    exibirErrTela(
+      "Erro: A pesquisa é obrigatória e deve conter até 200 caracteres.",
+      pesquisa
+    );
+
+    return;
+  }
+
+  const valPesquisaMinusculo = valPesquisa.toLowerCase();
+  const notas = document.querySelectorAll(".nota");
+  let flag = false;
+  reverterNotas();
+
+  notas.forEach((nota) => {
+    const tituloNota = nota.querySelector(".titulo-nota");
+    const conteudoNota = nota.querySelector(".txt-nota");
+    const txtTituloNota = tituloNota.textContent.toLowerCase();
+    const txtConteudoNota = conteudoNota.textContent.toLowerCase();
+
+    if (
+      txtTituloNota.includes(valPesquisaMinusculo) ||
+      txtConteudoNota.includes(valPesquisaMinusculo)
+    ) {
+      flag = true;
+    } else {
+      nota.classList.add("escondido");
+    }
+  });
+
+  if (!flag) {
+    exibirErrTela("Erro: Não foi possível encontrar sua pesquisa.", pesquisa);
+    reverterNotas();
+  }
+});
+
+adicionarEventoClick([overlayModalConfirmacao, botaoNegar], () => {
+  alternarModalConfirmacao(false);
+});
+
+adicionarEventoClick([botaoConfirmar], async () => {
+  const params = { acao: "deletar_nota", id: id };
+  const url = "deletar_nota.php";
+  const metodo = "POST";
+  const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado } = dados;
+
+  if (sucesso) {
+    redirecionar(msg, "painel.html");
+    return;
+  }
+
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
+  alternarModalConfirmacao(false);
+  alternarModalMsgs(true, msg);
+});
+
+// Eventos
+
+// Evento "input" para a pesquisa
+pesquisa.addEventListener("input", () => {
+  if (pesquisa.value === "") {
+    reverterNotas();
+  }
+});

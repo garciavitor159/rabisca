@@ -1,0 +1,42 @@
+.container-campo {
+  margin-bottom: 1.6rem;
+}
+
+.label {
+  display: inline-block;
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.campo-obrigatorio {
+  color: #cc0000;
+}
+
+.campo {
+  display: block;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  width: 100%;
+  padding: 1.5rem 1.3rem;
+  border: 0.1rem solid #888;
+  border-radius: 0.8rem;
+}
+
+.campo:focus {
+  border-color: #495672;
+  outline: none;
+  box-shadow: 0 0 1rem #495672;
+}
+
+.botao-enviar {
+  font-size: 1.5rem;
+  background-color: #495672;
+  padding: 1.5rem 1.7rem;
+}
+
+.botao-enviar:hover {
+  color: #495672;
+  background-color: transparent;
+  border-color: #495672;
+}

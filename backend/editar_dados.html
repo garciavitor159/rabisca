@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rabisca - Edite seus dados</title>
+    <!-- Favicon -->
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/min/styles.min.css" />
+    <link rel="stylesheet" href="css/min/conteudos_principais.min.css" />
+    <link rel="stylesheet" href="css/min/titulos.min.css" />
+    <link rel="stylesheet" href="css/min/forms.min.css" />
+    <link rel="stylesheet" href="css/min/campos_senha.min.css" />
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- JavaScript -->
+    <script type="module" src="js/min/scripts.min.js"></script>
+    <script type="module" src="js/min/verificar_existe_sessao_id.min.js"></script>
+    <script type="module" src="js/min/verificar_sessao_ultimo_acesso.min.js"></script>
+    <script type="module" src="js/min/efetuar_logout.min.js"></script>
+    <script type="module" src="js/min/editar_dados.min.js"></script>
+    <script type="module" src="js/min/alternar_senhas.min.js"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header>
+      <div class="container-logo">
+        <img src="imgs/logo.svg" alt="Logo do Rabisca" class="logo" />
+        <h1 class="titulo-principal">Rabisca</h1>
+      </div>
+      <nav class="navbar">
+        <button
+          id="botaoAbrirSidebar"
+          class="botao-alternar-sidebar botao-abrir-sidebar"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="lista-navbar">
+          <li>
+            <a href="painel.html" class="link-navbar"
+              ><i class="bi bi-speedometer2"></i> Painel</a
+            >
+          </li>
+          <li>
+            <a href="cadastrar_nota.html" class="link-navbar"
+              ><i class="bi bi-card-text"></i> Cadastre uma nota</a
+            >
+          </li>
+          <li>
+            <a href="consultar_notas.html" class="link-navbar"
+              ><i class="bi bi-search"></i> Consulte suas notas</a
+            >
+          </li>
+          <li>
+            <a href="editar_dados.html" class="link-navbar"
+              ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+            >
+          </li>
+          <li>
+            <a href="deletar_conta.html" class="link-navbar"
+              ><i class="bi bi-trash"></i> Delete sua conta</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="link-navbar link-logout"
+              ><i class="bi bi-box-arrow-in-left"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <h2 class="titulo">
+        Edite seus dados <i class="bi bi-pencil-square"></i>
+      </h2>
+      <form id="form" novalidate>
+        <div class="container-campo">
+          <label for="nome" class="label"
+            >Novo nome: <span class="campo-obrigatorio">*</span></label
+          >
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            class="campo"
+            placeholder="Digite seu nome"
+            maxlength="50"
+            required
+          />
+        </div>
+        <div class="container-campo">
+          <label for="email" class="label"
+            >Novo e-mail: <span class="campo-obrigatorio">*</span></label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="campo"
+            placeholder="Digite um e-mail"
+            maxlength="80"
+            required
+          />
+        </div>
+        <div class="container-campo">
+          <label for="senha" class="label"
+            >Nova senha: <span class="campo-obrigatorio">*</span></label
+          >
+          <div class="container-campo-senha">
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              class="campo campo-senha"
+              placeholder="Digite uma senha"
+              minlength="8"
+              maxlength="30"
+              required
+            />
+            <button
+              type="button"
+              id="botaoAlternarSenha"
+              class="botao-alternar-senha"
+            >
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="container-campo">
+          <label for="perguntaSeguranca" class="label"
+            >Nova pergunta de segurança:
+            <span class="campo-obrigatorio">*</span></label
+          >
+          <select
+            name="pergunta_seguranca"
+            id="perguntaSeguranca"
+            class="campo"
+            required
+          >
+            <option value="">Selecione uma pergunta</option>
+            <option value="0">
+              Qual foi o nome do seu primeiro professor favorito?
+            </option>
+            <option value="1">
+              Qual foi o primeiro filme que você assistiu no cinema?
+            </option>
+            <option value="2">
+              Qual é o nome da rua onde morava seu melhor amigo de infância?
+            </option>
+            <option value="3">
+              Qual foi o apelido mais estranho que você já teve?
+            </option>
+          </select>
+        </div>
+        <div class="container-campo">
+          <label for="resposta" class="label"
+            >Nova resposta: <span class="campo-obrigatorio">*</span></label
+          >
+          <input
+            type="text"
+            name="resposta"
+            id="resposta"
+            class="campo"
+            placeholder="Digite a resposta da pergunta acima"
+            maxlength="70"
+            required
+          />
+        </div>
+        <button type="submit" class="botao botao-enviar">
+          Editar <i class="bi bi-pencil-square"></i>
+        </button>
+      </form>
+    </main>
+    <!-- Barra lateral -->
+    <div id="overlaySidebar" class="overlay escondido"></div>
+    <nav id="sidebar" class="sidebar escondido">
+      <button
+        id="botaoFecharSidebar"
+        class="botao-alternar-sidebar botao-fechar-sidebar"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <ul class="lista-sidebar">
+        <li>
+          <a href="painel.html" class="link-sidebar"
+            ><i class="bi bi-speedometer2"></i> Painel</a
+          >
+        </li>
+        <li>
+          <a href="cadastrar_nota.html" class="link-sidebar"
+            ><i class="bi bi-card-text"></i> Cadastre uma nota</a
+          >
+        </li>
+        <li>
+          <a href="consultar_notas.html" class="link-sidebar"
+            ><i class="bi bi-search"></i> Consulte suas notas</a
+          >
+        </li>
+        <li>
+          <a href="editar_dados.html" class="link-sidebar"
+            ><i class="bi bi-pencil-square"></i> Edite seus dados</a
+          >
+        </li>
+        <li>
+          <a href="deletar_conta.html" class="link-sidebar"
+            ><i class="bi bi-trash"></i> Delete sua conta</a
+          >
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="link-sidebar link-logout"
+            ><i class="bi bi-box-arrow-in-left"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <!-- Modal de mensagens -->
+    <div id="overlayModalMsgs" class="overlay escondido"></div>
+    <div id="modalMsgs" class="modal escondido">
+      <h3 class="titulo-modal">
+        Atenção <i class="bi bi-exclamation-triangle"></i>
+      </h3>
+      <p id="txtModalMsgs" class="txt-modal"></p>
+      <button id="botaoFecharModalMsgs" class="botao botao-fechar-modal-msgs">
+        Fechar <i class="bi bi-x-square"></i>
+      </button>
+    </div>
+    <!-- Rodapé -->
+    <footer class="rodape">
+      <p id="copyright" class="copyright">
+        &copy; <span>2025</span> Rabisca - Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>

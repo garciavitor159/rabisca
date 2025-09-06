@@ -1,0 +1,55 @@
+.conteudo-principal {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 3.2rem;
+  padding-bottom: 8rem;
+}
+
+.secao-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.titulo-secao-intro {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.txt-secao-intro {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.container-img-destaque {
+  text-align: center;
+}
+
+.img-destaque {
+  width: 45rem;
+}
+
+.legenda-img-destaque {
+  font-size: 1.6rem;
+}
+
+/* Responsividade */
+
+/* Desktops grandes (>= 1200px) */
+@media (min-width: 1200px) {
+  .conteudo-principal {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5rem;
+  }
+
+  .titulo-secao-intro,
+  .txt-secao-intro {
+    text-align: left;
+  }
+
+  .container-botoes-cta {
+    justify-content: flex-start;
+  }
+}
