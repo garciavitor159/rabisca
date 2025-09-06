@@ -46,16 +46,21 @@ export const enviarDados = async (params, url, metodo) => {
       respostaHTTP = await axiosPersonalizado.post(url, params);
     }
 
-    return respostaHTTP.data;
+    const { sucesso, dados, msg } = respostaHTTP.data;
+    return retornarResposta(sucesso, dados, msg);
   } catch (err) {
     const { sucesso, dados, msg } = err.response.data;
-
-    return {
-      sucesso: sucesso ?? false,
-      dados: dados ?? {},
-      msg: msg ?? "Erro: Não foi possível completar sua requisição.",
-    };
+    return retornarResposta(sucesso, dados, msg);
   }
+};
+
+// Função que retorna uma resposta para o usuário
+const retornarResposta = (sucesso, dados, msg) => {
+  return {
+    sucesso: sucesso ?? false,
+    dados: dados ?? {},
+    msg: msg ?? "Erro: Não foi possível completar sua requisição.",
+  };
 };
 
 // Função que exibe mensagens de erro no console

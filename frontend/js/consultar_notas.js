@@ -19,7 +19,6 @@ import {
 // Elementos DOM e variáveis globais
 const pesquisa = document.querySelector("#pesquisa");
 const containerNotas = document.querySelector("#containerNotas");
-const notas = document.querySelectorAll(".nota");
 const templateNota = document.querySelector("#templateNota");
 
 const overlayModalConfirmacao = document.querySelector(
@@ -31,6 +30,8 @@ const botaoConfirmar = document.querySelector("#botaoConfirmar");
 const botaoNegar = document.querySelector("#botaoNegar");
 let id = null;
 
+// Funções
+
 // Função que alterna a visibilidade do modal de confirmação
 const alternarModalConfirmacao = (exibir) => {
   alternarVisibilidade([overlayModalConfirmacao, modalConfirmacao], exibir);
@@ -38,6 +39,8 @@ const alternarModalConfirmacao = (exibir) => {
 
 // Função que reverte as notas para o estado padrão
 const reverterNotas = () => {
+  const notas = document.querySelectorAll(".nota");
+
   notas.forEach((nota) => {
     nota.classList.toggle("escondido", false);
   });
@@ -48,10 +51,9 @@ adicionarEventoLoad(async () => {
   const url = "consultar_notas.php";
   const metodo = "GET";
   const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado, notas } = dados;
 
   if (sucesso) {
-    const { notas } = dados;
-
     notas.forEach((nota) => {
       const { id, titulo, conteudo } = nota;
       const cloneTemplateNota = templateNota.content.cloneNode(true);
@@ -72,7 +74,12 @@ adicionarEventoLoad(async () => {
     return;
   }
 
-  // redirecionar(msg, "cadastrar_nota.html");
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
+  redirecionar(msg, "cadastrar_nota.html");
 });
 
 adicionarEventoClick([document], (e) => {
@@ -115,7 +122,9 @@ adicionarEventoSubmit(form, (e) => {
   }
 
   const valPesquisaMinusculo = valPesquisa.toLowerCase();
+  const notas = document.querySelectorAll(".nota");
   let flag = false;
+  reverterNotas();
 
   notas.forEach((nota) => {
     const tituloNota = nota.querySelector(".titulo-nota");
@@ -147,16 +156,24 @@ adicionarEventoClick([botaoConfirmar], async () => {
   const params = { acao: "deletar_nota", id: id };
   const url = "deletar_nota.php";
   const metodo = "POST";
-  const { sucesso, msg } = await enviarDados(params, url, metodo);
+  const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado } = dados;
 
   if (sucesso) {
     redirecionar(msg, "painel.html");
     return;
   }
 
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
   alternarModalConfirmacao(false);
   alternarModalMsgs(true, msg);
 });
+
+// Eventos
 
 // Evento "input" para a pesquisa
 pesquisa.addEventListener("input", () => {

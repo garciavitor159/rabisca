@@ -8,9 +8,7 @@ import {
   converterNum,
   limparVal,
   validarID,
-  alternarModalMsgs,
   validarCampoObrigatorio,
-  exibirErrTela,
   enviarDados,
   redirecionar,
 } from "./utils.js";
@@ -33,27 +31,27 @@ adicionarEventoSubmit(form, async (e) => {
   const valConteudo = limparVal(conteudo.value);
 
   if (!validarID(valID)) {
-    alternarModalMsgs(
-      true,
-      "Erro: O ID é obrigatório e deve ser um número inteiro maior ou igual a 1."
+    redirecionar(
+      "Erro: O ID é obrigatório e deve ser um número inteiro maior ou igual a 1.",
+      "consultar_notas.html"
     );
 
     return;
   }
 
   if (!validarCampoObrigatorio(titulo, valTitulo, 80)) {
-    exibirErrTela(
+    redirecionar(
       "Erro: O título é obrigatório e deve conter até 80 caracteres.",
-      titulo
+      "consultar_notas.html"
     );
 
     return;
   }
 
   if (!validarCampoObrigatorio(conteudo, valConteudo, 200)) {
-    exibirErrTela(
+    redirecionar(
       "Erro: O conteúdo é obrigatório e deve conter até 200 caracteres.",
-      conteudo
+      "consultar_notas.html"
     );
 
     return;
@@ -68,6 +66,13 @@ adicionarEventoSubmit(form, async (e) => {
 
   const url = "editar_nota.php";
   const metodo = "POST";
-  const { msg } = await enviarDados(params, url, metodo);
+  const { dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado } = dados;
+
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
   redirecionar(msg, "consultar_notas.html");
 });

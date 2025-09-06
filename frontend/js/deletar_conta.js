@@ -60,13 +60,18 @@ adicionarEventoSubmit(form, async (e) => {
   const url = "deletar_conta.php";
   const metodo = "POST";
   const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { acessoNegado, campoErr } = dados;
 
   if (sucesso) {
     redirecionar(msg, "index.html");
     return;
   }
 
-  const { campoErr } = dados;
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
   alternarModalMsgs(true, msg);
 
   switch (campoErr) {

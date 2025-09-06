@@ -12,18 +12,19 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/conteudos_principais.css" />
-    <link rel="stylesheet" href="css/titulos.css" />
-    <link rel="stylesheet" href="css/botoes_cta.css" />
-    <link rel="stylesheet" href="css/painel.css" />
+    <link rel="stylesheet" href="css/min/styles.min.css" />
+    <link rel="stylesheet" href="css/min/conteudos_principais.min.css" />
+    <link rel="stylesheet" href="css/min/titulos.min.css" />
+    <link rel="stylesheet" href="css/min/botoes_cta.min.css" />
+    <link rel="stylesheet" href="css/min/painel.min.css" />
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JavaScript -->
-    <script type="module" src="js/scripts.js"></script>
-    <script type="module" src="js/verificar_sessao_ultimo_acesso.js"></script>
-    <script type="module" src="js/efetuar_logout.js"></script>
-    <script type="module" src="js/painel.js"></script>
+    <script type="module" src="js/min/scripts.min.js"></script>
+    <script type="module" src="js/min/verificar_existe_sessao_id.min.js"></script>
+    <script type="module" src="js/min/verificar_sessao_ultimo_acesso.min.js"></script>
+    <script type="module" src="js/min/efetuar_logout.min.js"></script>
+    <script type="module" src="js/min/painel.min.js"></script>
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -75,7 +76,9 @@
     </header>
     <!-- Conteúdo principal -->
     <main class="conteudo-principal">
-      <h2 id="titulo" class="titulo">Seja bem-vindo, <span>Teste</span>!</h2>
+      <h2 id="titulo" class="titulo">
+        Seja bem-vindo(a), <span>Usuário</span>!
+      </h2>
       <p class="txt-conteudo-principal">O que você deseja fazer?</p>
       <div class="container-botoes-cta">
         <a href="cadastrar_nota.html" class="botao botao-cta"

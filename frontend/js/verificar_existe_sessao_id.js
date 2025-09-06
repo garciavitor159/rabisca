@@ -2,9 +2,9 @@
 import { adicionarEventoLoad, enviarDados, redirecionar } from "./utils.js";
 
 adicionarEventoLoad(async () => {
-  const params = { acao: "verificar_sessao_ultimo_acesso" };
-  const url = "verificar_sessao_ultimo_acesso.php";
-  const metodo = "POST";
+  const params = { acao: "verificar_existe_sessao_id" };
+  const url = "verificar_existe_sessao_id.php";
+  const metodo = "GET";
   const { sucesso, msg } = await enviarDados(params, url, metodo);
 
   if (sucesso) {

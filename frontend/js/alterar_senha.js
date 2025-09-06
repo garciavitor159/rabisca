@@ -21,7 +21,7 @@ adicionarEventoLoad(async () => {
     return;
   }
 
-  // redirecionar(msg, "validar_pergunta_seguranca.html");
+  redirecionar(msg, "validar_pergunta_seguranca.html");
 });
 
 adicionarEventoSubmit(form, async (e) => {
@@ -45,10 +45,15 @@ adicionarEventoSubmit(form, async (e) => {
   const url = "alterar_senha.php";
   const metodo = "POST";
   const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
-  const { deveRedirecionar } = dados;
+  const { acessoNegado } = dados;
 
-  if (sucesso || deveRedirecionar) {
+  if (sucesso) {
     redirecionar(msg, "login.html");
+    return;
+  }
+
+  if (acessoNegado) {
+    redirecionar(msg, "validar_pergunta_seguranca.html");
     return;
   }
 

@@ -28,10 +28,7 @@ const alternarSidebar = (exibir) => {
 
 adicionarEventoPageshow((e) => {
   if (e.persisted) {
-    const pathname = location.pathname;
-    const dataAtual = new Date();
-    const timestamp = dataAtual.getTime();
-    window.location.href = `${pathname}?nocache=${timestamp}`;
+    window.location.reload();
   }
 });
 

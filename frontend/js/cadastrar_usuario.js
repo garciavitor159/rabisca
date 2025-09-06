@@ -86,13 +86,13 @@ adicionarEventoSubmit(form, async (e) => {
   const url = "cadastrar_usuario.php";
   const metodo = "POST";
   const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { campoErr } = dados;
 
   if (sucesso) {
     redirecionar(msg, "login.html");
     return;
   }
 
-  const { campoErr } = dados;
   alternarModalMsgs(true, msg);
 
   switch (campoErr) {

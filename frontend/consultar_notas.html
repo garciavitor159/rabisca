@@ -12,18 +12,19 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/conteudos_principais.css" />
-    <link rel="stylesheet" href="css/titulos.css" />
-    <link rel="stylesheet" href="css/forms.css" />
-    <link rel="stylesheet" href="css/consultar_notas.css" />
+    <link rel="stylesheet" href="css/min/styles.min.css" />
+    <link rel="stylesheet" href="css/min/conteudos_principais.min.css" />
+    <link rel="stylesheet" href="css/min/titulos.min.css" />
+    <link rel="stylesheet" href="css/min/forms.min.css" />
+    <link rel="stylesheet" href="css/min/consultar_notas.min.css" />
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JavaScript -->
-    <script type="module" src="js/scripts.js"></script>
-    <script type="module" src="js/verificar_sessao_ultimo_acesso.js"></script>
-    <script type="module" src="js/efetuar_logout.js"></script>
-    <script type="module" src="js/consultar_notas.js"></script>
+    <script type="module" src="js/min/scripts.min.js"></script>
+    <script type="module" src="js/min/verificar_existe_sessao_id.min.js"></script>
+    <script type="module" src="js/min/verificar_sessao_ultimo_acesso.min.js"></script>
+    <script type="module" src="js/min/efetuar_logout.min.js"></script>
+    <script type="module" src="js/min/consultar_notas.min.js"></script>
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -96,64 +97,7 @@
           Pesquisar <i class="bi bi-search"></i>
         </button>
       </form>
-      <div id="containerNotas" class="container-notas">
-        <section class="nota">
-          <h3 class="titulo-nota">Título de teste 1</h3>
-          <p class="txt-nota">Conteúdo de teste 1</p>
-          <div class="container-acoes-nota">
-            <a
-              href="editar_nota.html?id=1&titulo=Título%20de%20teste%201&conteudo=Conteúdo%20de%20teste%201"
-              class="botao botao-acao-nota botao-editar"
-              >Editar <i class="bi bi-pencil-square"></i
-            ></a>
-            <button data-id="1" class="botao botao-acao-nota botao-deletar">
-              Deletar <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </section>
-        <section class="nota">
-          <h3 class="titulo-nota">Título de teste 2</h3>
-          <p class="txt-nota">Conteúdo de teste 2</p>
-          <div class="container-acoes-nota">
-            <a
-              href="editar_nota.html?id=2&titulo=Título%20de%20teste%202&conteudo=Conteúdo%20de%20teste%202"
-              class="botao botao-acao-nota botao-editar"
-              >Editar <i class="bi bi-pencil-square"></i
-            ></a>
-            <button data-id="2" class="botao botao-acao-nota botao-deletar">
-              Deletar <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </section>
-        <section class="nota">
-          <h3 class="titulo-nota">Título de teste 3</h3>
-          <p class="txt-nota">Conteúdo de teste 3</p>
-          <div class="container-acoes-nota">
-            <a
-              href="editar_nota.html?id=3&titulo=Título%20de%20teste%203&conteudo=Conteúdo%20de%20teste%203"
-              class="botao botao-acao-nota botao-editar"
-              >Editar <i class="bi bi-pencil-square"></i
-            ></a>
-            <button data-id="3" class="botao botao-acao-nota botao-deletar">
-              Deletar <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </section>
-        <section class="nota">
-          <h3 class="titulo-nota">Título de teste 4</h3>
-          <p class="txt-nota">Conteúdo de teste 4</p>
-          <div class="container-acoes-nota">
-            <a
-              href="editar_nota.html?id=4&titulo=Título%20de%20teste%204&conteudo=Conteúdo%20de%20teste%204"
-              class="botao botao-acao-nota botao-editar"
-              >Editar <i class="bi bi-pencil-square"></i
-            ></a>
-            <button data-id="4" class="botao botao-acao-nota botao-deletar">
-              Deletar <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </section>
-      </div>
+      <div id="containerNotas" class="container-notas"></div>
     </main>
     <!-- Template de uma nota -->
     <template id="templateNota">

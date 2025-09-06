@@ -46,13 +46,18 @@ adicionarEventoSubmit(form, async (e) => {
   const url = "cadastrar_nota.php";
   const metodo = "POST";
   const { sucesso, dados, msg } = await enviarDados(params, url, metodo);
+  const { campoErr, acessoNegado } = dados;
 
   if (sucesso) {
     redirecionar(msg, "consultar_notas.html");
     return;
   }
 
-  const { campoErr } = dados;
+  if (acessoNegado) {
+    redirecionar(msg, "login.html");
+    return;
+  }
+
   alternarModalMsgs(true, msg);
 
   switch (campoErr) {
