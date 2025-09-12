@@ -1,0 +1,13 @@
+.area-botoes-cta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    text-align: center;
+    line-height: normal;
+}
+
+.botao-cta {
+    font-size: 1.6rem;
+    padding: 1.6rem 1.8rem;
+}

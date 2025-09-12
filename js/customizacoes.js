@@ -1,0 +1,1 @@
+const axiosCustomizado = axios.create({ baseURL: "php/", headers: { Accept: "application/json; charset=utf-8", "Content-Type": "application/json; charset=utf-8" } });
