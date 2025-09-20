@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabisca - Home</title>
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/botoes_cta.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/links.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/customizacoes.js"></script>
+    <script src="js/utilitarios.js" defer></script>
+    <script src="js/principal.js" defer></script>
+    <script src="js/encerrar_sessao.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="area-logo">
+            <img src="imgs/logo.svg" alt="Logo do Rabisca" class="logo">
+            <h1 class="titulo-principal">Rabisca</h1>
+        </div>
+        <nav class="navbar">
+            <button type="button" id="botaoAlternarNavbar" class="botao-alternar-navbar">
+                <i class="bi bi-list"></i>
+            </button>
+            <ul id="listaNavbar" class="lista-navbar">
+                <li>
+                    <a href="index.html" class="link-navbar">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastrar_usuario.html" class="link-navbar">
+                        <i class="bi bi-person-add"></i> Cadastre-se
+                    </a>
+                </li>
+                <li>
+                    <a href="fazer_login.html" class="link-navbar">
+                        <i class="bi bi-box-arrow-in-right"></i> Faça login
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="conteudo-principal">
+        <section class="secao-intro">
+            <h2 class="titulo-secao-intro">Suas anotações, sempre ao seu alcance</h2>
+            <p class="subtitulo-secao-intro">
+                Tire suas ideias da cabeça sem complicação. <i class="bi bi-emoji-smile"></i>
+            </p>
+            <div class="area-botoes-cta">
+                <a href="cadastrar_usuario.html" class="botao botao-principal botao-cta">
+                    Cadastre-se <i class="bi bi-person-add"></i>
+                </a>
+                <a href="fazer_login.html" class="botao botao-principal botao-cta">
+                    Faça login <i class="bi bi-box-arrow-in-right"></i>
+                </a>
+            </div>
+        </section>
+        <figure class="area-img-destaque">
+            <img src="imgs/bloco_notas.svg" alt="Pessoa fazendo anotações em um bloco de notas" class="img-destaque">
+            <figcaption class="legenda-img-destaque">
+                Ilustração por <a href="https://storyset.com/work" target="_blank" class="link">Storyset</a>
+            </figcaption>
+        </figure>
+    </main>
+
+    <div id="fundoModalAlerta" class="fundo escondido"></div>
+    <div id="modalAlerta" class="modal escondido">
+        <h3 class="titulo-modal">
+            Atenção <i class="bi bi-exclamation-triangle"></i>
+        </h3>
+        <p id="txtModalAlerta" class="txt-modal"></p>
+        <button type="button" id="botaoFecharModalAlerta" class="botao botao-modal botao-fechar botao-fechar-modal-alerta">
+            Fechar <i class="bi bi-x-square"></i>
+        </button>
+    </div>
+    
+    <footer class="rodape">
+        <p id="creditos" class="creditos">
+            <i class="bi bi-c-circle"></i> <span>2025</span> Rabisca - Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+</html>
