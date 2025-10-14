@@ -1,0 +1,11 @@
+.container-botoes-cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.container-botoes-cta a {
+  font-size: 1.6rem;
+  padding: 1.6rem 1.8rem;
+}
