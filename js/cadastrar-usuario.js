@@ -98,5 +98,5 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  redirecionar(msg, "fazer-login.html");
+  redirecionar(msg, "/fazer-login.html");
 });

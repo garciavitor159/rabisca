@@ -74,6 +74,8 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  const { urlRedirecionar } = dados;
-  redirecionar(msg, urlRedirecionar);
+  redirecionar(
+    msg,
+    tiposUsuario[0].checked ? "painel-comum.html" : "painel-admin.html"
+  );
 });
