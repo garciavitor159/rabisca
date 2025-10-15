@@ -10,7 +10,7 @@ window.addEventListener("pageshow", async () => {
   );
 
   if (!sucesso) {
-    redirecionar(msg, "/index.html");
+    redirecionar(msg, "index.html");
     return;
   }
 });
@@ -41,7 +41,7 @@ form.addEventListener("submit", async (e) => {
     const { redirecionar } = dados;
 
     if (redirecionar) {
-      redirecionar(msg, "/index.html");
+      redirecionar(msg, "index.html");
       return;
     }
 
@@ -49,5 +49,5 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  redirecionar(msg, "/fazer-login.html");
+  redirecionar(msg, "fazer-login.html");
 });

@@ -75,6 +75,6 @@ form.addEventListener("submit", async (e) => {
 
   redirecionar(
     msg,
-    tiposUsuario[0].checked ? "/painel-comum.html" : "/painel-admin.html"
+    tiposUsuario[0].checked ? "painel-comum.html" : "painel-admin.html"
   );
 });

@@ -67,5 +67,5 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  redirecionar(msg, "/editar-senha.html");
+  redirecionar(msg, "editar-senha.html");
 });
