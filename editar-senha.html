@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rabisca - Faça login</title>
+    <title>Rabisca - Edite sua senha</title>
     <link rel="icon" href="/imgs/favicon.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
@@ -13,15 +13,11 @@
     <link rel="stylesheet" href="/css/conteudos-principais.css" />
     <link rel="stylesheet" href="/css/forms.css" />
     <link rel="stylesheet" href="/css/campos-senha.css" />
-    <link rel="stylesheet" href="css/campos-tipo-usuario.css" />
-    <link rel="stylesheet" href="/css/txts-alternar-forms.css" />
-    <link rel="stylesheet" href="/css/links.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/customizacoes.js"></script>
     <script src="/js/utilitarios.js" defer></script>
     <script src="/js/principal.js" defer></script>
-    <script src="/js/encerrar-sessao.js" defer></script>
-    <script src="/js/fazer-login.js" defer></script>
+    <script src="/js/editar-senha.js" defer></script>
     <script src="/js/alternar-senhas.js" defer></script>
   </head>
   <body>
@@ -50,22 +46,10 @@
     </header>
 
     <main class="conteudo-principal">
-      <h2>Faça login <i class="bi bi-box-arrow-in-right"></i></h2>
+      <h2>Edite sua senha <i class="bi bi-pencil-square"></i></h2>
       <form id="form" novalidate>
         <div class="container-campo">
-          <label for="email" class="label"> E-mail: <span>*</span> </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="campo"
-            placeholder="nome@exemplo.com"
-            maxlength="80"
-            required
-          />
-        </div>
-        <div class="container-campo">
-          <label for="senha" class="label"> Senha: <span>*</span> </label>
+          <label for="senha" class="label"> Nova senha: <span>*</span> </label>
           <div class="container-campo-senha">
             <input
               type="password"
@@ -82,42 +66,10 @@
             </button>
           </div>
         </div>
-        <div class="container-campo">
-          <p class="label">Tipo de usuário: <span>*</span></p>
-          <div class="container-campos-tipo-usuario">
-            <div class="box-campo-tipo-usuario">
-              <input
-                type="radio"
-                name="tipo_usuario"
-                id="comum"
-                value="comum"
-                checked
-              />
-              <label for="comum">Comum</label>
-            </div>
-            <div class="box-campo-tipo-usuario">
-              <input
-                type="radio"
-                name="tipo_usuario"
-                id="admin"
-                value="admin"
-              />
-              <label for="admin">Administrador</label>
-            </div>
-          </div>
-        </div>
         <button type="submit" class="botao botao-primario botao-form">
-          Fazer login <i class="bi bi-box-arrow-in-right"></i>
+          Editar <i class="bi bi-pencil-square"></i>
         </button>
       </form>
-      <p class="txt-alternar-forms">
-        Ainda não tem uma conta?
-        <a href="/cadastrar-usuario.html" class="link">Cadastre-se</a>
-      </p>
-      <p class="txt-alternar-forms">
-        Esqueceu sua senha?
-        <a href="/validar-pergunta-seguranca.html" class="link">Clique aqui</a>
-      </p>
     </main>
 
     <aside class="container-botoes-acessibilidade">

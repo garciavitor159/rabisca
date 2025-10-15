@@ -1,4 +1,3 @@
-const form = document.querySelector("#form");
 const email = form.querySelector("#email");
 const senha = form.querySelector("#senha");
 const tiposUsuario = form.querySelectorAll("input[name='tipo_usuario']");
@@ -76,6 +75,6 @@ form.addEventListener("submit", async (e) => {
 
   redirecionar(
     msg,
-    tiposUsuario[0].checked ? "painel-comum.html" : "painel-admin.html"
+    tiposUsuario[0].checked ? "/painel-comum.html" : "/painel-admin.html"
   );
 });

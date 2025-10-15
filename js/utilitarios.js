@@ -1,3 +1,4 @@
+const form = document.querySelector("#form");
 const template = document.querySelector("#template");
 const fundoModalAlerta = document.querySelector("#fundoModalAlerta");
 const modalAlerta = document.querySelector("#modalAlerta");

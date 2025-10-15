@@ -23,10 +23,8 @@ const alternarNavbar = (esconder) => {
 };
 
 const alternarIconeAlternarNavbar = (voltarPadrao) => {
-  setTimeout(() => {
-    iconeAlternarNavbar.classList.toggle("bi-list", voltarPadrao);
-    iconeAlternarNavbar.classList.toggle("bi-x-lg", !voltarPadrao);
-  }, 500);
+  iconeAlternarNavbar.classList.toggle("bi-list", voltarPadrao);
+  iconeAlternarNavbar.classList.toggle("bi-x-lg", !voltarPadrao);
 };
 
 const alternarTamanhoFonte = (aumentar) => {
