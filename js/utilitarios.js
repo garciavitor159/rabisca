@@ -51,10 +51,10 @@ const retornarResposta = (resposta) => {
   };
 };
 
-const alternarModalAlerta = (deveExibir, msg) => {
-  alternarExibicao([fundoModalAlerta, modalAlerta], deveExibir);
+const alternarModalAlerta = (exibir, msg) => {
+  alternarExibicao([fundoModalAlerta, modalAlerta], exibir);
 
-  if (!deveExibir && !msg) {
+  if (!exibir && !msg) {
     setTimeout(() => {
       txtModalAlerta.textContent = "";
     }, 500);
@@ -65,9 +65,9 @@ const alternarModalAlerta = (deveExibir, msg) => {
   txtModalAlerta.textContent = msg;
 };
 
-const alternarExibicao = (els, deveExibir) => {
+const alternarExibicao = (els, exibir) => {
   els.forEach((el) => {
-    el.classList.toggle("escondido", !deveExibir);
+    el.classList.toggle("escondido", !exibir);
   });
 };
 

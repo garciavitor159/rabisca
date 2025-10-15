@@ -9,33 +9,33 @@ const botaoDiminuirFonte = document.querySelector("#botaoDiminuirFonte");
 const botaoFecharModalAlerta = modalAlerta.querySelector("button");
 const containerAnoAtual = document.querySelector("#containerAnoAtual");
 
-const alternarNavbar = (deveEsconder) => {
-  if (deveEsconder) {
+const alternarNavbar = (esconder) => {
+  if (esconder) {
     containerLinksNavbar.style.height = "";
     containerLinksNavbar.classList.remove("exibindo");
-    alternarIconeAlternarNavbar(deveEsconder);
+    alternarIconeAlternarNavbar(esconder);
     return;
   }
 
   containerLinksNavbar.style.height = `${containerLinksNavbar.scrollHeight}px`;
   containerLinksNavbar.classList.add("exibindo");
-  alternarIconeAlternarNavbar(deveEsconder);
+  alternarIconeAlternarNavbar(esconder);
 };
 
-const alternarIconeAlternarNavbar = (deveVoltarPadrao) => {
+const alternarIconeAlternarNavbar = (voltarPadrao) => {
   setTimeout(() => {
-    iconeAlternarNavbar.classList.toggle("bi-list", deveVoltarPadrao);
-    iconeAlternarNavbar.classList.toggle("bi-x-lg", !deveVoltarPadrao);
+    iconeAlternarNavbar.classList.toggle("bi-list", voltarPadrao);
+    iconeAlternarNavbar.classList.toggle("bi-x-lg", !voltarPadrao);
   }, 500);
 };
 
-const alternarTamanhoFonte = (deveAumentar) => {
+const alternarTamanhoFonte = (aumentar) => {
   let tamanhoFonteHTML = window.getComputedStyle(html);
   tamanhoFonteHTML = tamanhoFonteHTML.fontSize;
   tamanhoFonteHTML = Number(tamanhoFonteHTML.replace("px", ""));
 
   html.style.fontSize = `${
-    deveAumentar ? ++tamanhoFonteHTML : --tamanhoFonteHTML
+    aumentar ? ++tamanhoFonteHTML : --tamanhoFonteHTML
   }px`;
 
   localStorage.setItem("fontePreferida", tamanhoFonteHTML);
