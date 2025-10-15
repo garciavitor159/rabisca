@@ -20,8 +20,9 @@
     <script src="js/utilitarios.js" defer></script>
     <script src="js/principal.js" defer></script>
     <script src="js/encerrar-sessao.js" defer></script>
-    <script src="js/alternar-senhas.js" defer></script>
     <script src="js/cadastrar-usuario.js" defer></script>
+    <script src="js/alternar-senhas.js" defer></script>
+    <script src="js/consultar-perguntas-seguranca.js" defer></script>
   </head>
   <body>
     <header>
@@ -106,15 +107,6 @@
             required
           >
             <option value="">Selecione uma opção</option>
-            <option value="1">
-              Qual era o nome do seu primeiro professor?
-            </option>
-            <option value="2">
-              Qual foi o seu brinquedo favorito na infância?
-            </option>
-            <option value="3">
-              Qual foi o título do primeiro livro que você leu inteiro?
-            </option>
           </select>
         </div>
         <div class="container-campo">
@@ -137,6 +129,10 @@
         Já tem uma conta? <a href="fazer-login" class="link">Faça login</a>
       </p>
     </main>
+
+    <template id="template">
+      <option value=""></option>
+    </template>
 
     <aside class="container-botoes-acessibilidade">
       <button type="button" id="botaoAlternarTema" class="botao">

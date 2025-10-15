@@ -1,3 +1,10 @@
+const form = document.querySelector("#form");
+const nomeUsuario = form.querySelector("#nomeUsuario");
+const email = form.querySelector("#email");
+const senha = form.querySelector("#senha");
+const perguntaSeguranca = form.querySelector("#perguntaSeguranca");
+const resposta = form.querySelector("#resposta");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const valNomeUsuario = nomeUsuario.value.trim();

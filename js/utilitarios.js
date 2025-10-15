@@ -1,9 +1,4 @@
-const form = document.querySelector("#form");
-const nomeUsuario = form.querySelector("#nomeUsuario");
-const email = form.querySelector("#email");
-const senha = form.querySelector("#senha");
-const perguntaSeguranca = form.querySelector("#perguntaSeguranca");
-const resposta = form.querySelector("#resposta");
+const template = document.querySelector("#template");
 const fundoModalAlerta = document.querySelector("#fundoModalAlerta");
 const modalAlerta = document.querySelector("#modalAlerta");
 const txtModalAlerta = modalAlerta.querySelector("p");
@@ -118,4 +113,9 @@ const limparCampos = (campos) => {
   campos.forEach((el) => {
     limparCampo(el);
   });
+};
+
+const redirecionar = (msg, url) => {
+  localStorage.setItem("msg", msg);
+  window.location.href = url;
 };
