@@ -1,0 +1,14 @@
+.container-campo-senha {
+  position: relative;
+}
+
+.container-campo-senha input {
+  padding-right: 4rem;
+}
+
+.container-campo-senha button {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.3rem;
+  font-size: 1.5rem;
+}

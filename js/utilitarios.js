@@ -1,3 +1,9 @@
+const form = document.querySelector("#form");
+const nomeUsuario = form.querySelector("#nomeUsuario");
+const email = form.querySelector("#email");
+const senha = form.querySelector("#senha");
+const perguntaSeguranca = form.querySelector("#perguntaSeguranca");
+const resposta = form.querySelector("#resposta");
 const fundoModalAlerta = document.querySelector("#fundoModalAlerta");
 const modalAlerta = document.querySelector("#modalAlerta");
 const txtModalAlerta = modalAlerta.querySelector("p");
@@ -67,5 +73,49 @@ const alternarModalAlerta = (deveExibir, msg) => {
 const alternarExibicao = (els, deveExibir) => {
   els.forEach((el) => {
     el.classList.toggle("escondido", !deveExibir);
+  });
+};
+
+const validarCampoObrigatorio = (campo, valCampo, maxCarac) => {
+  return campo.checkValidity() && valCampo && valCampo.length <= maxCarac;
+};
+
+const exibirErro = (msgErr, campoErr) => {
+  alternarModalAlerta(true, msgErr);
+  limparCampo(campoErr);
+};
+
+const limparCampo = (campo) => {
+  campo.value = "";
+  campo.blur();
+};
+
+const validarEmail = (email, valEmail) => {
+  const emailRegExp = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+  return (
+    email.checkValidity() && emailRegExp.test(valEmail) && valEmail.length <= 80
+  );
+};
+
+const validarSenha = (senha, valSenha) => {
+  const senhaRegExp = new RegExp(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,30}$/
+  );
+
+  return senha.checkValidity() && senhaRegExp.test(valSenha);
+};
+
+const validarPerguntaSeguranca = (perguntaSeguranca, valPerguntaSeguranca) => {
+  return perguntaSeguranca.checkValidity() && validarID(valPerguntaSeguranca);
+};
+
+const validarID = (id) => {
+  return Number.isInteger(id) && id >= 1;
+};
+
+const limparCampos = (campos) => {
+  campos.forEach((el) => {
+    limparCampo(el);
   });
 };
