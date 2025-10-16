@@ -1,11 +1,24 @@
+@charset "UTF-8";
+
+:root {
+  --cor-0: #333;
+  --cor-1: #fff;
+  --cor-2: #222;
+  --cor-3: #c84755;
+  --cor-4: #b1404d;
+  --cor-5: #e08e4c;
+  --cor-6: #c98044;
+  --cor-7: #0056b3;
+  --cor-8: #3688df;
+  --cor-9: #62a48d;
+  --cor-10: #548675;
+  --cor-11: #bbb;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
 }
 
 body {
@@ -13,7 +26,7 @@ body {
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
-  color: #333;
+  color: var(--cor-0);
   background-color: #f0f0f0;
   min-height: 100dvh;
 }
@@ -24,6 +37,17 @@ img {
   height: auto;
 }
 
+a {
+  display: inline-block;
+  text-decoration: none;
+  line-height: normal;
+  color: inherit;
+}
+
+i {
+  pointer-events: none;
+}
+
 button {
   font-family: inherit;
   color: inherit;
@@ -32,117 +56,102 @@ button {
   cursor: pointer;
 }
 
-i {
-  pointer-events: none;
-}
-
-a {
-  display: inline-block;
-  text-decoration: none;
-  line-height: normal;
-  color: inherit;
-}
-
-span {
-  display: inline-block;
-}
-
 .tema-escuro {
-  color: #fff;
-  background-color: #0f0f0f;
+  color: var(--cor-1);
+  background-color: var(--cor-2);
 }
 
 .tema-escuro .modal {
-  background-color: #222;
+  background-color: var(--cor-0);
 }
 
-.container-logo {
+.cabecalho {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.6rem;
-  padding: 3.2rem 1.6rem;
+  gap: 16px;
+  height: 150px;
 }
 
-.container-logo img {
-  width: 8rem;
-}
-
-.container-logo h1 {
-  font-size: 3rem;
-}
-
-.navbar {
+.barra-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
   text-align: center;
-  color: #fff;
-  background-color: #c84755;
+  color: var(--cor-1);
+  background-color: var(--cor-3);
 }
 
-.navbar button {
-  font-size: 1.6rem;
-  padding: 1.6rem 1.8rem;
-  transition: 0.5s ease-in-out;
+.botao-alternar-area-links-barra-nav {
+  padding: 16px 18px;
+  transition: background-color 0.5s ease-in-out;
 }
 
-.navbar button:hover {
-  background-color: #85323b;
+.botao-alternar-area-links-barra-nav:hover {
+  background-color: var(--cor-4);
 }
 
-.container-links-navbar {
+.area-links-barra-nav {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-  background-color: #85323b;
+  background-color: var(--cor-4);
   height: 0;
-  transition: 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
 }
 
-.container-links-navbar a {
-  font-size: 1.6rem;
-  padding: 1.6rem 0;
+.link-barra-nav {
+  padding: 16px 0;
 }
 
 .conteudo-principal {
   flex: 1;
   align-self: center;
-  width: 140rem;
+  width: 1400px;
   max-width: 90%;
-  padding: 3.2rem 0;
+  padding: 32px 0;
 }
 
 .botao {
   text-align: center;
-  color: #fff;
-  border-radius: 0.8rem;
-  transition: 0.5s ease-in-out;
+  color: var(--cor-1);
+  border-radius: 8px;
+  transition: background-color 0.5s ease-in-out;
 }
 
-.botao-primario {
-  background-color: #e08e4c;
-}
-
-.botao-primario:hover {
-  background-color: #cf874c;
-}
-
-.container-botoes-acessibilidade {
+.area-botoes-acessibilidade {
   display: flex;
-  flex-direction: column-reverse;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 15px;
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 15px;
+  right: 15px;
 }
 
-.container-botoes-acessibilidade button {
-  font-size: 1.5rem;
-  background-color: #62a48d;
-  padding: 1.5rem;
+.botao-acessibilidade {
+  font-size: 15px;
+  background-color: var(--cor-9);
+  padding: 15px;
 }
 
-.container-botoes-acessibilidade button:hover {
-  background-color: #589b84;
+.botao-acessibilidade:hover {
+  background-color: var(--cor-10);
+}
+
+.botao-alternar-tema {
+  order: 3;
+}
+
+.botao-aumentar-fonte {
+  order: 2;
+}
+
+.botao-diminuir-fonte {
+  order: 1;
+}
+
+.botao-resetar-fonte {
+  order: 0;
 }
 
 .fundo-modal {
@@ -152,7 +161,7 @@ span {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  transition: 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .fundo-modal.escondido {
@@ -163,19 +172,17 @@ span {
 .modal {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 16px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: auto;
   background-color: #fff;
-  width: 40rem;
+  width: 400px;
   max-width: 90%;
-  max-height: 90%;
-  padding: 1.6rem;
-  border-radius: 0.8rem;
-  transition: 0.5s ease-in-out;
+  padding: 16px;
+  border-radius: 8px;
+  transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .modal.escondido {
@@ -184,53 +191,42 @@ span {
   pointer-events: none;
 }
 
-.modal p {
-  font-size: 1.6rem;
-  min-height: 4rem;
-}
-
-.modal button {
-  font-size: 1.3rem;
-  padding: 1.3rem 1.5rem;
-}
-
 .titulo-modal {
-  font-size: 2rem;
+  font-size: 1.3em;
   text-align: center;
-  padding-bottom: 1.6rem;
-  border-bottom: 0.1rem solid #bbb;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cor-11);
 }
 
-.botao-perigo {
-  background-color: #c84755;
-}
-
-.botao-perigo:hover {
-  background-color: #9e3f4a;
+.msg-modal {
+  min-height: 40px;
 }
 
 .botao-fechar-modal-alerta {
   align-self: flex-end;
+  font-size: 0.8rem;
+  background-color: var(--cor-3);
+  padding: 14px 16px;
+}
+
+.botao-fechar-modal-alerta:hover {
+  background-color: var(--cor-4);
 }
 
 .rodape {
   font-style: italic;
   text-align: center;
-  color: #fff;
+  color: var(--cor-1);
   background-color: #495672;
-  padding: 1.6rem;
+  padding: 16px;
 }
 
-.rodape p {
-  font-size: 1.6rem;
-}
-
-@media (min-width: 1200px) {
-  .navbar button {
+@media only screen and (min-width: 1200px) {
+  .botao-alternar-area-links-barra-nav {
     display: none;
   }
 
-  .container-links-navbar {
+  .area-links-barra-nav {
     flex-direction: row;
     justify-content: center;
     overflow-y: auto;
@@ -239,18 +235,12 @@ span {
     transition: none;
   }
 
-  .container-links-navbar a {
-    padding: 1.6rem 1.8rem;
-    transition: 0.5s ease-in-out;
+  .link-barra-nav {
+    padding: 16px 18px;
+    transition: background-color 0.5s ease-in-out;
   }
 
-  .container-links-navbar a:hover {
-    background-color: #85323b;
-  }
-}
-
-@media (min-width: 1400px) {
-  html {
-    font-size: 66.5%;
+  .link-barra-nav:hover {
+    background-color: var(--cor-4);
   }
 }

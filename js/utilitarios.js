@@ -1,8 +1,6 @@
-const form = document.querySelector("#form");
-const template = document.querySelector("#template");
-const fundoModalAlerta = document.querySelector("#fundoModalAlerta");
-const modalAlerta = document.querySelector("#modalAlerta");
-const txtModalAlerta = modalAlerta.querySelector("p");
+const fundoModalAlerta = document.querySelector("#fundo-modal-alerta");
+const modalAlerta = document.querySelector("#modal-alerta");
+const msgModalAlerta = document.querySelector("#msg-modal-alerta");
 
 const enviarDados = async (params, url, metodo) => {
   try {
@@ -10,8 +8,7 @@ const enviarDados = async (params, url, metodo) => {
 
     switch (metodo) {
       case "GET":
-        const paramsURL = new URLSearchParams(params).toString();
-        url += `?${paramsURL}`;
+        url += `?${new URLSearchParams(params).toString()}`;
         resposta = await axiosCustomizado.get(url);
         break;
       case "POST":
@@ -21,10 +18,7 @@ const enviarDados = async (params, url, metodo) => {
         resposta = await axiosCustomizado.put(url, params);
         break;
       case "DELETE":
-        resposta = await axiosCustomizado.delete(url, {
-          data: params,
-        });
-
+        resposta = await axiosCustomizado.delete(url, { data: params });
         break;
       default:
         return retornarResposta({
@@ -55,68 +49,14 @@ const retornarResposta = (resposta) => {
 const alternarModalAlerta = (exibir, msg) => {
   alternarExibicao([fundoModalAlerta, modalAlerta], exibir);
 
-  if (!exibir && !msg) {
-    setTimeout(() => {
-      txtModalAlerta.textContent = "";
-    }, 500);
-
+  if (!exibir) {
+    setTimeout(() => (msgModalAlerta.textContent = ""), 500);
     return;
   }
 
-  txtModalAlerta.textContent = msg;
+  msgModalAlerta.textContent = msg;
 };
 
 const alternarExibicao = (els, exibir) => {
-  els.forEach((el) => {
-    el.classList.toggle("escondido", !exibir);
-  });
-};
-
-const validarCampoObrigatorio = (campo, valCampo, maxCarac) => {
-  return campo.checkValidity() && valCampo && valCampo.length <= maxCarac;
-};
-
-const exibirErro = (msgErr, campoErr) => {
-  alternarModalAlerta(true, msgErr);
-  limparCampo(campoErr);
-};
-
-const limparCampo = (campo) => {
-  campo.value = "";
-  campo.blur();
-};
-
-const validarEmail = (email, valEmail) => {
-  const emailRegExp = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-
-  return (
-    email.checkValidity() && emailRegExp.test(valEmail) && valEmail.length <= 80
-  );
-};
-
-const validarSenha = (senha, valSenha) => {
-  const senhaRegExp = new RegExp(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,30}$/
-  );
-
-  return senha.checkValidity() && senhaRegExp.test(valSenha);
-};
-
-const validarPerguntaSeguranca = (perguntaSeguranca, valPerguntaSeguranca) => {
-  return perguntaSeguranca.checkValidity() && validarID(valPerguntaSeguranca);
-};
-
-const validarID = (id) => {
-  return Number.isInteger(id) && id >= 1;
-};
-
-const limparCampos = (campos) => {
-  campos.forEach((el) => {
-    limparCampo(el);
-  });
-};
-
-const redirecionar = (msg, url) => {
-  localStorage.setItem("msg", msg);
-  window.location.href = url;
+  els.forEach((el) => el.classList.toggle("escondido", !exibir));
 };

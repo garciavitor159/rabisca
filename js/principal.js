@@ -1,53 +1,74 @@
-const html = document.documentElement;
 const corpoPagina = document.body;
-const botaoAlternarNavbar = document.querySelector("#botaoAlternarNavbar");
-const iconeAlternarNavbar = botaoAlternarNavbar.querySelector("i");
-const containerLinksNavbar = document.querySelector("#containerLinksNavbar");
-const botaoAlternarTema = document.querySelector("#botaoAlternarTema");
-const botaoAumentarFonte = document.querySelector("#botaoAumentarFonte");
-const botaoDiminuirFonte = document.querySelector("#botaoDiminuirFonte");
-const botaoFecharModalAlerta = modalAlerta.querySelector("button");
-const containerAnoAtual = document.querySelector("#containerAnoAtual");
 
-const alternarNavbar = (esconder) => {
+const botaoAlternarAreaLinksBarraNav = document.querySelector(
+  "#botao-alternar-area-links-barra-nav"
+);
+
+const iconeAlternarAreaLinksBarraNav = document.querySelector(
+  "#icone-alternar-area-links-barra-nav"
+);
+
+const areaLinksBarraNav = document.querySelector("#area-links-barra-nav");
+
+const botaoAlternarTema = document.querySelector("#botao-alternar-tema");
+const botaoAumentarFonte = document.querySelector("#botao-aumentar-fonte");
+const botaoDiminuirFonte = document.querySelector("#botao-diminuir-fonte");
+const botaoResetarFonte = document.querySelector("#botao-resetar-fonte");
+
+const botaoFecharModalAlerta = document.querySelector(
+  "#botao-fechar-modal-alerta"
+);
+
+const areaAnoAtual = document.querySelector("#area-ano-atual");
+const msgRedirecionamento = localStorage.getItem("msg-redirecionamento");
+
+const alternarAreaLinksBarraNav = (esconder) => {
   if (esconder) {
-    containerLinksNavbar.style.height = "";
-    containerLinksNavbar.classList.remove("exibindo");
-    alternarIconeAlternarNavbar(esconder);
-    return;
+    areaLinksBarraNav.style.height = "";
+    areaLinksBarraNav.classList.remove("exibindo");
+  } else {
+    areaLinksBarraNav.style.height = `${areaLinksBarraNav.scrollHeight}px`;
+    areaLinksBarraNav.classList.add("exibindo");
   }
 
-  containerLinksNavbar.style.height = `${containerLinksNavbar.scrollHeight}px`;
-  containerLinksNavbar.classList.add("exibindo");
-  alternarIconeAlternarNavbar(esconder);
+  alternarIconeAlternarAreaLinksBarraNav(esconder);
 };
 
-const alternarIconeAlternarNavbar = (voltarPadrao) => {
-  iconeAlternarNavbar.classList.toggle("bi-list", voltarPadrao);
-  iconeAlternarNavbar.classList.toggle("bi-x-lg", !voltarPadrao);
+const alternarIconeAlternarAreaLinksBarraNav = (voltarPadrao) => {
+  iconeAlternarAreaLinksBarraNav.classList.toggle("bi-list", voltarPadrao);
+  iconeAlternarAreaLinksBarraNav.classList.toggle("bi-x-lg", !voltarPadrao);
 };
 
-const alternarTamanhoFonte = (aumentar) => {
-  let tamanhoFonteHTML = window.getComputedStyle(html);
-  tamanhoFonteHTML = tamanhoFonteHTML.fontSize;
-  tamanhoFonteHTML = Number(tamanhoFonteHTML.replace("px", ""));
+const alternarTamanhoFonte = (aumentar, botaoAlternarTamanhoFonte) => {
+  let tamanhoFonteCorpoPagina = consultarTamanhoFonteCorpoPagina();
 
-  html.style.fontSize = `${
-    aumentar ? ++tamanhoFonteHTML : --tamanhoFonteHTML
+  corpoPagina.style.fontSize = `${
+    aumentar
+      ? (tamanhoFonteCorpoPagina += 0.1)
+      : (tamanhoFonteCorpoPagina -= 0.1)
   }px`;
 
-  localStorage.setItem("fontePreferida", tamanhoFonteHTML);
+  botaoAlternarTamanhoFonte.disabled = true;
+  setTimeout(() => (botaoAlternarTamanhoFonte.disabled = false), 150);
+  localStorage.setItem("tamanho-fonte", tamanhoFonteCorpoPagina);
 
-  if (containerLinksNavbar.classList.contains("exibindo")) {
-    alternarNavbar(false);
-  }
+  if (areaLinksBarraNav.classList.contains("exibindo"))
+    alternarAreaLinksBarraNav(false);
+};
+
+const consultarTamanhoFonteCorpoPagina = () => {
+  let tamanhoFonteCorpoPagina = window.getComputedStyle(corpoPagina);
+
+  tamanhoFonteCorpoPagina = Number(
+    tamanhoFonteCorpoPagina.fontSize.replace("px", "")
+  );
+
+  return tamanhoFonteCorpoPagina;
 };
 
 window.addEventListener("pageshow", async () => {
   const { sucesso, dados, msg } = await enviarDados(
-    {
-      acao: "consultar_ano_atual",
-    },
+    { acao: "consultar-ano-atual" },
     "consultar-ano-atual.php",
     "GET"
   );
@@ -58,81 +79,86 @@ window.addEventListener("pageshow", async () => {
   }
 
   const { anoAtual } = dados;
-  containerAnoAtual.textContent = anoAtual;
+  areaAnoAtual.textContent = anoAtual;
 });
 
+window.addEventListener("pageshow", () => alternarAreaLinksBarraNav(true));
+
 window.addEventListener("pageshow", () => {
-  alternarNavbar(true);
+  if (!msgRedirecionamento) alternarModalAlerta(false);
 });
 
 window.addEventListener("load", () => {
-  const msg = localStorage.getItem("msg");
+  if (!msgRedirecionamento) {
+    console.warn(
+      "Aviso: Mensagem de redirecionamento não definida. Isto pode significar um erro."
+    );
 
-  if (!msg) {
-    console.warn("Aviso: Mensagem não definida. Isto pode significar um erro.");
     return;
   }
 
-  alternarModalAlerta(true, msg);
-  localStorage.removeItem("msg");
+  alternarModalAlerta(true, msgRedirecionamento);
+  localStorage.removeItem("msg-redirecionamento");
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("load", () =>
   corpoPagina.classList.toggle(
     "tema-escuro",
-    localStorage.getItem("temaPreferido") === "escuro"
-  );
-});
+    localStorage.getItem("tema-escuro") === "escuro"
+  )
+);
 
-window.addEventListener("load", () => {
-  html.style.fontSize = `${localStorage.getItem("fontePreferida")}px`;
-});
+window.addEventListener(
+  "load",
+  () =>
+    (corpoPagina.style.fontSize = `${localStorage.getItem("tamanho-fonte")}px`)
+);
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth >= 1200) {
-    alternarNavbar(true);
-  }
+  if (window.innerWidth >= 1200) alternarAreaLinksBarraNav(true);
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    alternarModalAlerta(false, "");
-  }
+  if (e.key === "Escape") alternarModalAlerta(false);
 });
 
 document.addEventListener("click", (e) => {
-  if (!containerLinksNavbar.contains(e.target)) {
-    alternarNavbar(true);
-  }
+  if (!areaLinksBarraNav.contains(e.target)) alternarAreaLinksBarraNav(true);
 });
 
-botaoAlternarNavbar.addEventListener("click", (e) => {
+botaoAlternarAreaLinksBarraNav.addEventListener("click", (e) => {
   e.stopPropagation();
-  alternarNavbar(containerLinksNavbar.classList.contains("exibindo"));
+  alternarAreaLinksBarraNav(areaLinksBarraNav.classList.contains("exibindo"));
 });
 
 botaoAlternarTema.addEventListener("click", (e) => {
   e.stopPropagation();
 
   localStorage.setItem(
-    "temaPreferido",
+    "tema-escuro",
     corpoPagina.classList.toggle("tema-escuro") ? "escuro" : "claro"
   );
 });
 
 botaoAumentarFonte.addEventListener("click", (e) => {
   e.stopPropagation();
-  alternarTamanhoFonte(true);
+  alternarTamanhoFonte(true, e.target);
 });
 
 botaoDiminuirFonte.addEventListener("click", (e) => {
   e.stopPropagation();
-  alternarTamanhoFonte(false);
+  alternarTamanhoFonte(false, e.target);
 });
 
-[fundoModalAlerta, botaoFecharModalAlerta].forEach((el) => {
+botaoResetarFonte.addEventListener("click", (e) => {
+  e.stopPropagation();
+  corpoPagina.style.fontSize = "initial";
+  localStorage.setItem("tamanho-fonte", consultarTamanhoFonteCorpoPagina());
+});
+
+[fundoModalAlerta, botaoFecharModalAlerta].forEach((el) =>
   el.addEventListener("click", (e) => {
     e.stopPropagation();
-    alternarModalAlerta(false, "");
-  });
-});
+    alternarModalAlerta(false);
+  })
+);
