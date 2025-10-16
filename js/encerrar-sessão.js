@@ -1,0 +1,11 @@
+window.addEventListener("pageshow", async () => {
+  const { sucesso, msg } = await enviarDados(
+    { acao: "encerrar-sessao" },
+    "encerrar-sessao.php",
+    "POST"
+  );
+
+  if (!sucesso) {
+    console.error(msg);
+  }
+});

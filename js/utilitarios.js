@@ -1,3 +1,10 @@
+const form = document.querySelector("#form");
+const nomeUsuario = document.querySelector("#nome-usuario");
+const email = document.querySelector("#email");
+const senha = document.querySelector("#senha");
+const perguntaSeguranca = document.querySelector("#pergunta-seguranca");
+const resposta = document.querySelector("#resposta");
+const template = document.querySelector("#template");
 const fundoModalAlerta = document.querySelector("#fundo-modal-alerta");
 const modalAlerta = document.querySelector("#modal-alerta");
 const msgModalAlerta = document.querySelector("#msg-modal-alerta");
@@ -60,3 +67,35 @@ const alternarModalAlerta = (exibir, msg) => {
 const alternarExibicao = (els, exibir) => {
   els.forEach((el) => el.classList.toggle("escondido", !exibir));
 };
+
+const redirecionar = (msg, url) => {
+  localStorage.setItem("msg-redirecionamento", msg);
+  window.location.href = url;
+};
+
+const validarCampoObrigatorio = (campo, valCampo, maxCarac) =>
+  campo.checkValidity() && valCampo && valCampo.length <= maxCarac;
+
+const exibirErr = (msgErr, campoErr) => {
+  alternarModalAlerta(true, msgErr);
+  limparCampo(campoErr);
+};
+
+const limparCampo = (campo) => {
+  campo.value = "";
+  campo.blur();
+};
+
+const validarEmail = (email, valEmail) =>
+  email.checkValidity() &&
+  new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(valEmail) &&
+  valEmail.length <= 80;
+
+const validarSenha = (senha, valSenha) =>
+  senha.checkValidity() &&
+  new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,30}$/).test(valSenha);
+
+const validarPerguntaSeguranca = (perguntaSeguranca, valPerguntaSeguranca) =>
+  perguntaSeguranca.checkValidity() && validarID(valPerguntaSeguranca);
+
+const validarID = (id) => Number.isInteger(id) && id >= 1;

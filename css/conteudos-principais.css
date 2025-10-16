@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.conteudo-principal {
+  width: 700px;
+}
+
+.titulo-conteudo-principal {
+  font-size: 1.7em;
+  text-align: center;
+  margin-bottom: 16px;
+}

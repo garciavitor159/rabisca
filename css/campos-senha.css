@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.area-campo-senha {
+  position: relative;
+}
+
+.campo-senha {
+  padding-right: 40px;
+}
+
+.botao-alternar-senha {
+  position: absolute;
+  top: 16px;
+  right: 13px;
+  font-size: 0.9em;
+}

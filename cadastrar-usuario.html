@@ -3,21 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rabisca - O seu bloco de notas online</title>
+    <title>Rabisca - Cadastre-se</title>
     <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="css/minificados/principal.min.css" />
-    <link rel="stylesheet" href="css/minificados/botoes-chamada-acao.min.css" />
-    <link rel="stylesheet" href="css/minificados/index.min.css" />
+    <link rel="stylesheet" href="css/conteudos-principais.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/campos-senha.css" />
+    <link rel="stylesheet" href="css/txts-alternar-forms.css" />
     <link rel="stylesheet" href="css/minificados/links.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/minificados/customizacoes.min.js"></script>
     <script src="js/minificados/utilitarios.min.js" defer></script>
     <script src="js/minificados/principal.min.js" defer></script>
     <script src="js/minificados/encerrar-sessao.min.js" defer></script>
+    <script src="js/minificados/alternar-senhas.min.js" defer></script>
+    <script
+      src="js/minificados/consultar-perguntas-seguranca.min.js"
+      defer
+    ></script>
+    <script src="js/minificados/cadastrar-usuario.min.js" defer></script>
   </head>
   <body>
     <header class="cabecalho">
@@ -50,35 +58,91 @@
     </nav>
 
     <main class="conteudo-principal">
-      <section class="secao-intro">
-        <h2 class="titulo-secao-intro">
-          Suas anotações, sempre ao seu alcance
-        </h2>
-        <p class="conteudo-secao-intro">
-          Tire suas ideias da cabeça sem complicações.
-          <i class="bi bi-emoji-smile"></i>
-        </p>
-        <nav class="area-botoes-chamada-acao">
-          <a href="cadastrar-usuario.html" class="botao botao-chamada-acao">
-            Cadastre-se <i class="bi bi-person-add"></i>
-          </a>
-          <a href="fazer-login.html" class="botao botao-chamada-acao">
-            Faça login <i class="bi bi-emoji-smile"></i>
-          </a>
-        </nav>
-      </section>
-      <figure class="area-img-destaque">
-        <img
-          src="imgs/bloco-notas.svg"
-          alt="Uma pessoa fazendo anotações em um bloco de notas"
-          class="img-destaque"
+      <h2 class="titulo-conteudo-principal">
+        Cadastre-se <i class="bi bi-person-add"></i>
+      </h2>
+      <form id="form" novalidate>
+        <label for="nome-usuario" class="label">
+          Nome de usuário: <span class="campo-obrigatorio">*</span>
+        </label>
+        <input
+          type="text"
+          name="nome-usuario"
+          id="nome-usuario"
+          class="campo"
+          placeholder="Digite um nome de usuário"
+          maxlength="50"
+          required
         />
-        <figcaption>
-          Ilustração por
-          <a href="https://storyset.com/work" class="link">Storyset</a>
-        </figcaption>
-      </figure>
+        <label for="email" class="label">
+          E-mail: <span class="campo-obrigatorio">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="campo"
+          placeholder="nome@exemplo.com"
+          maxlength="80"
+          required
+        />
+        <label for="senha" class="label">
+          Senha: <span class="campo-obrigatorio">*</span>
+        </label>
+        <div class="area-campo-senha">
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            class="campo campo-senha"
+            placeholder="Mínimo de 8 caracteres"
+            minlength="8"
+            maxlength="30"
+            required
+          />
+          <button
+            type="button"
+            id="botao-alternar-senha"
+            class="botao-alternar-senha"
+          >
+            <i id="icone-alternar-senha" class="bi bi-eye"></i>
+          </button>
+        </div>
+        <label for="pergunta-seguranca" class="label">
+          Pergunta de segurança: <span class="campo-obrigatorio">*</span>
+        </label>
+        <select
+          name="pergunta-seguranca"
+          id="pergunta-seguranca"
+          class="campo"
+          required
+        >
+          <option value="">Selecione uma opção</option>
+        </select>
+        <label for="resposta" class="label">
+          Resposta: <span class="campo-obrigatorio">*</span>
+        </label>
+        <input
+          type="text"
+          name="resposta"
+          id="resposta"
+          class="campo"
+          placeholder="Digite a resposta da pergunta"
+          maxlength="70"
+          required
+        />
+        <button type="submit" class="botao botao-enviar">
+          Cadastrar-se <i class="bi bi-person-add"></i>
+        </button>
+      </form>
+      <p class="txt-alternar-forms">
+        Já tem uma conta? <a href="fazer-login.html" class="link">Faça login</a>
+      </p>
     </main>
+
+    <template id="template">
+      <option value="">Selecione uma opção</option>
+    </template>
 
     <aside class="area-botoes-acessibilidade">
       <button

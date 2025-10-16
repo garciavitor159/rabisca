@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.label {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.campo-obrigatorio {
+  color: var(--cor-3);
+}
+
+.campo {
+  display: block;
+  font-family: inherit;
+  font-size: 0.9em;
+  color: inherit;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px 13px;
+  border: 1px solid var(--cor-11);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.campo:focus {
+  outline: none;
+}
+
+.botao-enviar {
+  font-size: 0.9em;
+  background-color: var(--cor-5);
+  padding: 15px 17px;
+}
+
+.botao-enviar:hover {
+  background-color: var(--cor-6);
+}
