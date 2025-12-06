@@ -1,0 +1,15 @@
+.area-dos-botoes-de-chamada-para-acao {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.area-dos-botoes-de-chamada-para-acao a {
+    background-color: #e08e4c;
+    padding: 16px 18px;
+}
+
+.area-dos-botoes-de-chamada-para-acao a:hover {
+    background-color: #d88038;
+}
