@@ -21,8 +21,8 @@ img {
 }
 
 button {
-    font-family: inherit;
-    color: inherit;
+    font-family: unset;
+    color: unset;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -30,7 +30,7 @@ button {
 
 i {
     display: inline-block;
-    color: inherit;
+    color: unset;
     pointer-events: none;
 }
 
@@ -38,7 +38,7 @@ a {
     display: inline-block;
     text-decoration: none;
     line-height: normal;
-    color: inherit;
+    color: unset;
 }
 
 main {
@@ -69,7 +69,7 @@ span {
     padding: 32px 16px;
 }
 
-.menu-de-navegacao {
+.barra-nav {
     position: sticky;
     top: 0;
     left: 0;
@@ -78,54 +78,46 @@ span {
     background-color: #c84755;
 }
 
-.menu-de-navegacao button {
+.barra-nav button {
     font-size: 1em;
     padding: 16px 18px;
     transition: 0.5s ease-in-out;
 }
 
-.menu-de-navegacao button:hover {
-    background-color: #ac414e;
+.barra-nav button:hover {
+    background-color: #a5424e;
 }
 
-#area-dos-links-do-menu-de-navegacao {
+#area-links-barra-nav {
     overflow-y: hidden;
-    background-color: #ac414e;
+    background-color: #a5424e;
     height: 0;
     transition: 0.5s ease-in-out;
 }
 
-#area-dos-links-do-menu-de-navegacao a {
+#area-links-barra-nav a {
     display: block;
     padding: 16px 0;
 }
 
-.area-de-acessibilidade {
+.area-acessibilidade {
     display: flex;
     flex-direction: column-reverse;
     gap: 15px;
     position: fixed;
-    bottom: 15px;
+    top: 50%;
     right: 15px;
+    transform: translateY(-50%);
 }
 
-.area-de-acessibilidade button {
+.area-acessibilidade button {
     font-size: 0.938em;
     background-color: #62a48d;
     padding: 15px;
 }
 
-.area-de-acessibilidade button:hover {
-    background-color: #589781;
-}
-
-#area-dos-botoes-de-acessibilidade {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 15px;
-    overflow-y: hidden;
-    height: 0;
-    transition: 0.5s ease-in-out;
+.area-acessibilidade button:hover {
+    background-color: #4d8f78;
 }
 
 .rodape {
@@ -137,25 +129,25 @@ span {
 }
 
 @media (min-width: 1200px) {
-    .menu-de-navegacao button {
+    .barra-nav button {
         display: none;
     }
 
-    #area-dos-links-do-menu-de-navegacao {
+    #area-links-barra-nav {
         display: flex;
         justify-content: center;
-        overflow-y: auto;
-        background-color: transparent;
-        height: auto;
-        transition: none;
+        overflow-y: unset;
+        background-color: unset;
+        height: unset;
+        transition: unset;
     }
 
-    #area-dos-links-do-menu-de-navegacao a {
+    #area-links-barra-nav a {
         padding: 16px 18px;
         transition: 0.5s ease-in-out;
     }
 
-    #area-dos-links-do-menu-de-navegacao a:hover {
-        background-color: #ac414e;
+    #area-links-barra-nav a:hover {
+        background-color: #a5424e;
     }
 }

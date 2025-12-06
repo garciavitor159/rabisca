@@ -1,25 +1,25 @@
 <?php 
-    session_start();
+    require_once "inicia-sessao.php";
 
-    function resgatarDados() {
+    function resgataDados() {
         return $_SERVER["REQUEST_METHOD"] === "GET" ? $_GET : json_decode(file_get_contents("php://input"), true);
     }
 
-    function retornarResposta($sucesso, $dados, $mensagem, $codigoHTTP) {
+    function retornaResposta($sucesso, $dados, $msg, $codHTTP) {
         if (empty($dados)) {
             $dados = new stdClass();
         }
 
-        http_response_code($codigoHTTP);
+        http_response_code($codHTTP);
 
         die(json_encode([
             "sucesso" => $sucesso,
             "dados" => $dados,
-            "mensagem" => $mensagem
+            "msg" => $msg
         ]));
     }
 
-    function encerrarSessao() {
+    function encerraSessao() {
         session_unset();
         session_destroy();
     }

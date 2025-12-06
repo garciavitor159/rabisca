@@ -1,4 +1,4 @@
-.fundo-do-modal {
+.fundo-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@
     transition: 0.5s ease-in-out;
 }
 
-.fundo-do-modal.escondido {
+.fundo-modal.escondido {
     opacity: 0;
     pointer-events: none;
 }
@@ -34,7 +34,13 @@
 .modal.escondido {
     top: 0;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none
+}
+
+.modal h3 {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #bbb;
 }
 
 .modal p {
@@ -44,10 +50,4 @@
 .modal button {
     font-size: 0.875em;
     padding: 14px 16px;
-}
-
-.titulo-do-modal {
-    text-align: center;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #bbb;
 }
