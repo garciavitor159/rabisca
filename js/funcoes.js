@@ -49,3 +49,36 @@ const alternaEls = (exibir, els) => {
         el.classList.toggle("escondido", !exibir);
     });
 };
+
+const validaCampoObrigatorio = (campo, valorCampo, qtdMaxCarac) => {
+    return campo.checkValidity() && valorCampo && valorCampo.length <= qtdMaxCarac;
+};
+
+const exibeErro = (msgErro, campoErro) => {
+    alternaModalAlerta(true, msgErro);
+    limpaCampo(campoErro);
+};
+
+const limpaCampo = (campo) => {
+    campo.value = "";
+    campo.blur();
+};
+
+const validaSenha = (campoSenha, senha) => {
+    return campoSenha.checkValidity() && new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,30}$/).test(senha);
+};
+
+const validaPerguntaSeguranca = (campoPerguntaSeguranca, perguntaSeguranca) => {
+    return campoPerguntaSeguranca && ["0", "1", "2"].includes(perguntaSeguranca);
+};
+
+const limpaCampos = (campos) => {
+    campos.forEach((el) => {
+        limpaCampo(el);
+    });
+};
+
+const redireciona = (msgRedirecionamento, urlRedirecionamento) => {
+    localStorage.setItem("msg-redirecionamento", msgRedirecionamento);
+    window.location.href = urlRedirecionamento;
+};

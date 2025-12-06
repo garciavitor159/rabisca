@@ -105,9 +105,8 @@ span {
     flex-direction: column-reverse;
     gap: 15px;
     position: fixed;
-    top: 50%;
+    bottom: 15px;
     right: 15px;
-    transform: translateY(-50%);
 }
 
 .area-acessibilidade button {

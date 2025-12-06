@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabisca - Cadastre-se</title>
+    <link rel="icon" href="imgs/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/conteudos-principais.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/campos-senha.css">
+    <link rel="stylesheet" href="css/campos-pergunta-seguranca.css">
+    <link rel="stylesheet" href="css/links.css">
+    <link rel="stylesheet" href="css/modais.css">
+    <link rel="stylesheet" href="css/botoes-modais-alerta.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/customizacoes.js"></script>
+    <script src="js/funcoes.js" defer></script>
+    <script src="js/principal.js" defer></script>
+    <script src="js/modais-alerta.js" defer></script>
+    <script src="js/encerra-sessao.js" defer></script>
+    <script src="js/cadastro-usuarios.js" defer></script>
+    <script src="js/campos-senha.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="imgs/logo.svg" alt="Logo do Rabisca">
+        <h1>Rabisca</h1>
+    </header>
+
+    <nav class="barra-nav">
+        <button type="button" id="botao-alterna-barra-nav">
+            <i class="bi bi-list"></i>
+        </button>
+        <div id="area-links-barra-nav">
+            <a href="index.html">
+                <i class="bi bi-house"></i> Início
+            </a>
+            <a href="cadastro-usuarios.html">
+                <i class="bi bi-person-add"></i> Cadastre-se
+            </a>
+            <a href="login.html">
+                <i class="bi bi-box-arrow-in-right"></i> Login
+            </a>
+            <a href="sobre-dev.html">
+                <i class="bi bi-file-earmark-person"></i> Sobre o desenvolvedor
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <h2>
+            Cadastre-se <i class="bi bi-person-add"></i>
+        </h2>
+        <form id="form" novalidate>
+            <label for="campo-nome-usuario" class="label">
+                Nome de usuário: <span>*</span>
+            </label>
+            <input type="text" name="nome-usuario" id="campo-nome-usuario" class="campo" placeholder="Digite um nome de usuário" maxlength="70" required>
+            <label for="campo-senha" class="label">
+                Senha: <span>*</span>
+            </label>
+            <div class="area-campo-senha">
+                <input type="password" name="senha" id="campo-senha" class="campo" placeholder="Digite uma senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,30}$" title="A senha é obrigatória e deve conter entre 8 e 30 caracteres, incluindo ao menos uma letra minúscula, uma letra maiúscula, um número e um caractere especial." maxlength="30" required>
+                <button type="button" id="botao-alterna-senha">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </div>
+            <label for="campo-pergunta-seguranca" class="label">
+                Pergunta de segurança: <span>*</span>
+            </label>
+            <select name="pergunta-seguranca" id="campo-pergunta-seguranca" class="campo" required>
+                <option value="">Selecione uma opção</option>
+                <option value="0">Qual era o nome do seu primeiro professor(a)?</option>
+                <option value="1">Qual era o nome do seu primeiro animal de estimação?</option>
+                <option value="2">Qual era o nome do seu brinquedo favorito na infância?</option>
+            </select>
+            <label for="campo-resposta" class="label">
+                Resposta: <span>*</span>
+            </label>
+            <input type="text" name="resposta" id="campo-resposta" class="campo" placeholder="Digite uma resposta" maxlength="70" required>
+            <button type="submit" class="botao botao-envia-form">
+                Cadastrar-se <i class="bi bi-person-add"></i>
+            </button>
+        </form>
+    </main>
+
+    <div class="area-acessibilidade">
+        <button type="button" id="botao-aumenta-fonte" class="botao">A+</button>
+        <button type="button" id="botao-diminui-fonte" class="botao">A-</button>
+        <button type="button" id="botao-reseta-fonte" class="botao">
+            <i class="bi bi-arrow-counterclockwise"></i>
+        </button>
+    </div>
+
+    <div id="fundo-modal-alerta" class="fundo-modal escondido"></div>
+    <div id="modal-alerta" class="modal escondido">
+        <h3>
+            Atenção <i class="bi bi-exclamation-triangle"></i>
+        </h3>
+        <p></p>
+        <button type="button" class="botao">
+            Fechar <i class="bi bi-x-square"></i>
+        </button>
+    </div>
+
+    <footer class="rodape">
+        <p>
+            &copy; <span id="area-ano-atual">2025</span> Rabisca - Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+</html>
