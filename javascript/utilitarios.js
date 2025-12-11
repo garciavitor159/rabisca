@@ -80,7 +80,7 @@ const adicionaEventoSubmit = (formulario, callback) => {
 
 const validaDados = async (camposValidar, acao, urlEnvio, metodo, urlRedirecionamento) => {
     const { campoID, campoNome, campoSenha, campoPerguntaSeguranca, campoResposta, campoTitulo, campoTexto } = camposValidar;
-    const id = campoID?.value.trim();
+    const id = Number(campoID?.value.trim());
     const nome = campoNome?.value.trim();
     const senha = campoSenha?.value.trim();
     const perguntaSeguranca = campoPerguntaSeguranca?.value.trim();
