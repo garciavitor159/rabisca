@@ -1,8 +1,7 @@
 <?php 
 require_once("utilitarios.php");
-$dados = resgataDados("POST");
-$acao = trim($dados["acao"]);
-validaAcao($acao, "encerrar-sessao");
+validaMetodoRequisicao("POST");
+validaAcao(trim(resgataDados()["acao"]), "encerrar-sessao");
 encerraSessao();
-retornaResposta(true, [], null, 200);
+retornaResposta(true, null, null, 200);
 ?>

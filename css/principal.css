@@ -1,5 +1,17 @@
-@charset "UTF-8";
+/* Variáveis */
+:root {
+    --cor-1: #c84755;
+    --cor-2: #86323c;
+    --cor-3: #e08e4c;
+    --cor-4: #b8753e;
+    --cor-5: #428cdb;
+    --cor-6: #0056b3;
+    --cor-7: #62a48d;
+    --cor-8: #4a7e6b;
+    --cor-9: #495672;
+}
 
+/* Estilos gerais */
 * {
     padding: 0;
     margin: 0;
@@ -24,6 +36,7 @@ img {
 
 button {
     font-family: unset;
+    font-size: 1em;
     color: unset;
     background-color: transparent;
     border: none;
@@ -34,10 +47,6 @@ i {
     display: inline-block;
     color: unset;
     pointer-events: none;
-}
-
-ul {
-    list-style-type: none;
 }
 
 a {
@@ -59,6 +68,7 @@ span {
     display: inline-block;
 }
 
+/* Helpers */
 .botao {
     text-align: center;
     color: #fff;
@@ -66,6 +76,12 @@ span {
     transition: 0.5s ease-in-out;
 }
 
+.tema-escuro {
+    color: #fff;
+    background-color: #222;
+}
+
+/* Cabeçalho */
 .cabecalho {
     display: flex;
     justify-content: center;
@@ -75,38 +91,39 @@ span {
     padding: 32px 16px;
 }
 
+/* Menu de navegação */
 .menu-navegacao {
     position: sticky;
     top: 0;
     left: 0;
     text-align: center;
     color: #fff;
-    background-color: #c84755;
+    background-color: var(--cor-1);
 }
 
 .menu-navegacao button {
-    font-size: 1em;
     padding: 16px 18px;
     transition: 0.5s ease-in-out;
 }
 
 .menu-navegacao button:hover {
-    background-color: #972b37;
+    background-color: var(--cor-2);
 }
 
-#lista-menu-navegacao {
+#area-links-menu-navegacao {
     overflow-y: hidden;
-    background-color: #972b37;
+    background-color: var(--cor-2);
     height: 0;
     transition: 0.5s ease-in-out;
 }
 
-.item-lista-menu-navegacao a {
+#area-links-menu-navegacao a {
     display: block;
     padding: 16px 0;
 }
 
-.area-botoes-acessibilidade {
+/* Área de acessibilidade */
+.area-acessibilidade {
     display: flex;
     flex-direction: column-reverse;
     gap: 15px;
@@ -115,30 +132,34 @@ span {
     right: 15px;
 }
 
-.area-botoes-acessibilidade button {
+.area-acessibilidade button {
     font-size: 0.938em;
-    background-color: #62a48d;
+    background-color: var(--cor-7);
     padding: 15px;
 }
 
-.area-botoes-acessibilidade button:hover {
-    background-color: #417261;
+.area-acessibilidade button:hover {
+    background-color: var(--cor-8);
 }
 
+/* Rodapé */
 .rodape {
     font-style: italic;
     text-align: center;
     color: #fff;
-    background-color: #495672;
+    background-color: var(--cor-9);
     padding: 16px;
 }
 
+/* Responsividade */
+
+/* Desktops (>= 1200px) */
 @media (min-width: 1200px) {
     .menu-navegacao button {
         display: none;
     }
 
-    #lista-menu-navegacao {
+    #area-links-menu-navegacao {
         display: flex;
         justify-content: center;
         overflow-y: unset;
@@ -147,12 +168,12 @@ span {
         transition: unset;
     }
 
-    .item-lista-menu-navegacao a {
+    #area-links-menu-navegacao a {
         padding: 16px 18px;
         transition: 0.5s ease-in-out;
     }
 
-    .item-lista-menu-navegacao a:hover {
-        background-color: #972b37;
+    #area-links-menu-navegacao a:hover {
+        background-color: var(--cor-2);
     }
 }

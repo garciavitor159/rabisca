@@ -1,3 +1,4 @@
+// Instância customizada do Axios
 const axiosCustomizado = axios.create({
     baseURL: "php/",
     headers: {

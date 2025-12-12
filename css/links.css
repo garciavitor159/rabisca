@@ -1,7 +1,9 @@
-@charset "UTF-8";
+.tema-escuro .link {
+    color: var(--cor-5);
+}
 
 .link {
-    color: #0056b3;
+    color: var(--cor-6);
 }
 
 .link:hover {
