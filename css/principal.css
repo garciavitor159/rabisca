@@ -1,0 +1,193 @@
+/* Variáveis */
+:root {
+    --cor-1: #c84755;
+    --cor-2: #9e3945;
+    --cor-3: #e08e4c;
+    --cor-4: #c7793a;
+    --cor-5: #0056b3;
+    --cor-6: #62a48d;
+    --cor-7: #4a836f;
+    --cor-8: #495672;
+}
+
+/* Estilos gerais */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f0f0f0;
+    min-height: 100dvh;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    line-height: normal;
+    color: unset;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+span {
+    display: inline-block;
+}
+
+button {
+    font-family: unset;
+    font-size: 1em;
+    color: unset;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    align-self: center;
+    width: 1400px;
+    max-width: 90%;
+    padding: 32px 0;
+}
+
+h1 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* Helpers */
+.botao {
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    transition: 0.5s linear;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    text-align: center;
+}
+
+.cabecalho div {
+    padding: 32px 16px;
+}
+
+.link-logotipo {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.link-logotipo span {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.barra-navegacao {
+    background-color: var(--cor-1);
+}
+
+.barra-navegacao button {
+    padding: 16px 18px;
+    transition: 0.5s linear;
+}
+
+.barra-navegacao button:hover {
+    background-color: var(--cor-2);
+}
+
+#lista-barra-navegacao {
+    overflow-y: hidden;
+    background-color: var(--cor-2);
+    height: 0;
+    transition: 0.5s linear;
+}
+
+.item-lista-barra-navegacao a {
+    display: block;
+    padding: 16px 0;
+}
+
+/* Ferramentas de acessibilidade */
+.area-ferramentas-acessibilidade {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
+.area-ferramentas-acessibilidade button {
+    font-size: 0.938em;
+    background-color: var(--cor-6);
+    padding: 15px;
+}
+
+.area-ferramentas-acessibilidade button:hover {
+    background-color: var(--cor-7);
+}
+
+.area-ferramentas-acessibilidade div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    overflow-y: hidden;
+    height: 0;
+    transition: 0.5s linear;
+}
+
+/* Rodapé */
+.rodape {
+    font-style: italic;
+    text-align: center;
+    color: #fff;
+    background-color: var(--cor-8);
+    padding: 16px;
+}
+
+/* Responsividade */
+
+/* Desktops (>= 1200px) */
+@media (min-width: 1200px) {
+    .barra-navegacao button {
+        display: none;
+    }
+
+    #lista-barra-navegacao {
+        display: flex;
+        justify-content: center;
+        overflow-y: unset;
+        background-color: unset;
+        height: unset;
+        transition: unset;
+    }
+
+    .item-lista-barra-navegacao a {
+        padding: 16px 18px;
+        transition: 0.5s linear;
+    }
+
+    .item-lista-barra-navegacao a:hover {
+        background-color: var(--cor-2);
+    }
+}

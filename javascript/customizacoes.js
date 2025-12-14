@@ -1,4 +1,5 @@
-const customAxios = axios.create({
+// Instância customizada do Axios
+const axiosCustomizado = axios.create({
     baseURL: "php/",
     headers: {
         Accept: "application/json; charset=UTF-8",
